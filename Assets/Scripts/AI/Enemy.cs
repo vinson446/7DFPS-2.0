@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Combat Settings")]
     [SerializeField] int damage;
+    public int Damage => damage;
 
     [SerializeField] float atkSpeed;
     public float AtkSpeed => atkSpeed;

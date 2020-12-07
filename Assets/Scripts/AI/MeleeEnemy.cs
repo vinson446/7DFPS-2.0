@@ -51,7 +51,11 @@ public class MeleeEnemy : Enemy
 
             OnAttackAnimation();
 
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(0.5f);
+
+            stateMachine.PlayerTrans.GetComponent<Player>().TakeDamage(Damage);
+
+            yield return new WaitForSeconds(1f);
 
             ResetAnimBools();
 
