@@ -16,11 +16,6 @@ public class RangeEnemy : Enemy
         // if player is in atk range still and atk speed cooldown is refreshed, attack again
     }
 
-    void CheckIfTargetInAtkRange()
-    {
-        
-    }
-
     public override void Attack()
     {
         StartCoroutine(AttackCoroutine());

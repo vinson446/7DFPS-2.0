@@ -8,8 +8,6 @@ public class MeleeAttackState : MeleeState
     {
         stateMachine.MEnemy.ChangeState("Melee Attack State");
 
-        stateMachine.MEnemy.OnAttackAnimation();
-
         stateMachine.MEnemy.Attack();
     }
 }

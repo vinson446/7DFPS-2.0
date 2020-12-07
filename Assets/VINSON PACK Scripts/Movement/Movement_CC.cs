@@ -18,9 +18,11 @@ public class Movement_CC : Movement
     [SerializeField] float lowJumpMultiplier = 2f;
     Vector3 drag;
 
+    /*
     [Header("RotationSpeed")]
     [SerializeField] bool thirdPerson;
     [SerializeField] float rotationSpeed = 20;
+    */
 
     [Header("Ground Checks")]
     [SerializeField] Transform groundChecker;
@@ -45,10 +47,12 @@ public class Movement_CC : Movement
         else
             MovementRaw();
 
+        /*
         if (thirdPerson)
             RotateWithMovement();
         else
             RotateWithMouse();
+        */
     }
 
     void Movement()
@@ -71,12 +75,17 @@ public class Movement_CC : Movement
         isGrounded = Physics.CheckSphere(groundChecker.position, groundCheck, ground,
             QueryTriggerInteraction.Ignore);
 
-        input = GetMovementInputRaw();
+        // input = GetMovementInputRaw();
+
+        float x = Input.GetAxisRaw("Horizontal");
+        float z = Input.GetAxisRaw("Vertical");
+
+        Vector3 move = transform.right * x + transform.forward * z;
 
         if (Input.GetKey(KeyCode.LeftShift))
-            characterController.Move(input * sprintSpeed * Time.deltaTime);
+            characterController.Move(move * sprintSpeed * Time.deltaTime);
         else
-            characterController.Move(input * moveSpeed * Time.deltaTime);
+            characterController.Move(move * moveSpeed * Time.deltaTime);
 
         Jump();
     }
@@ -100,7 +109,7 @@ public class Movement_CC : Movement
         characterController.Move(velocity * Time.deltaTime);
     }
 
-    // third person
+    /* third person
     void RotateWithMovement()
     {
         if (input != Vector3.zero)
@@ -115,4 +124,5 @@ public class Movement_CC : Movement
     {
 
     }
+    */
 }

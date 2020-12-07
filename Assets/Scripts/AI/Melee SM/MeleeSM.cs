@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class MeleeSM : StateMachine
 {
+    Transform playerTrans;
+    public Transform PlayerTrans { get => playerTrans; set => playerTrans = value; }
+
     MeleeEnemy mEnemy;
     public MeleeEnemy MEnemy { get => mEnemy; set => mEnemy = value; }
 
@@ -14,6 +17,7 @@ public class MeleeSM : StateMachine
     // Start is called before the first frame update
     void Start()
     {
+        playerTrans = FindObjectOfType<Player>().transform;
         mEnemy = GetComponentInParent<MeleeEnemy>();
         navAgent = GetComponentInParent<NavMeshAgent>();
 

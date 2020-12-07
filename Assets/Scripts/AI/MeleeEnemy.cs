@@ -21,6 +21,8 @@ public class MeleeEnemy : Enemy
     public event Action OnAttack = delegate { };
     public event Action OnDeath = delegate { };
 
+    Vector3 initPos;
+
     MeleeSM stateMachine;
 
     private void Start()
@@ -30,19 +32,30 @@ public class MeleeEnemy : Enemy
 
     private void Update()
     {
-        // if player is in atk range still and atk speed cooldown is refreshed, attack again
+
     }
 
     public override void Attack()
     {
+        initPos = transform.position;
+
         StartCoroutine(AttackCoroutine());
     }
 
     IEnumerator AttackCoroutine()
     {
-        yield return new WaitForSeconds(1);
+        do
+        {
+            transform.position = initPos;
+            LookAtPlayer();
 
-        ResetAnimBools();
+            OnAttackAnimation();
+
+            yield return new WaitForSeconds(1.5f);
+
+            ResetAnimBools();
+
+        } while (Vector3.Distance(transform.position, stateMachine.PlayerTrans.position) <= AtkRange);
 
         stateMachine.ChangeState<MeleeCheckState>();
     }
@@ -50,6 +63,15 @@ public class MeleeEnemy : Enemy
     public override void Die()
     {
         stateMachine.ChangeState<MeleeDeathState>();
+    }
+
+    void LookAtPlayer()
+    {
+        Vector3 lookAt = new Vector3(stateMachine.PlayerTrans.position.x, transform.position.y, stateMachine.PlayerTrans.position.z);
+        transform.LookAt(lookAt);
+
+        // to fix attack animation
+        transform.Rotate(0, 30, 0);
     }
 
     // animation

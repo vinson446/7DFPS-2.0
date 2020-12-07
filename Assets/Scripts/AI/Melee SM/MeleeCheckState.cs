@@ -14,6 +14,7 @@ public class MeleeCheckState : MeleeState
     [SerializeField] float walkSpeed;
     [SerializeField] float runSpeed;
     [SerializeField] float rotSpeed;
+    bool rotInstantly;
 
     [Header("Debug")]
     [SerializeField] bool debugAggroRange;
@@ -23,24 +24,14 @@ public class MeleeCheckState : MeleeState
     {
         stateMachine.MEnemy.ChangeState("Melee Check State");
 
+        rotInstantly = false;
+
         stateMachine.NavAgent.enabled = true;
     }
 
     public override void Tick()
     {
-        LookAtTarget();
         CheckAction();
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            stateMachine.MEnemy.Die();
-        }
-    }
-
-    void LookAtTarget()
-    {
-        transform.rotation = Quaternion.Slerp(transform.rotation,
-        Quaternion.LookRotation(new Vector3(target.position.x, 0, target.position.z)), Time.deltaTime * rotSpeed);
     }
 
     void CheckAction()
@@ -53,6 +44,14 @@ public class MeleeCheckState : MeleeState
 
             return;
         }
+
+        if (!rotInstantly)
+        {
+            LookAtTargetInstantly();
+            rotInstantly = true;
+        }
+
+        LookAtTarget();
 
         // if player is outside of aggro check, walk towards player
         if (Vector3.Distance(transform.position, target.position) > aggroCheck)
@@ -70,6 +69,27 @@ public class MeleeCheckState : MeleeState
 
             stateMachine.MEnemy.OnRunAnimation();
         }
+    }
+
+    void LookAtTarget()
+    {
+        Vector3 toTarget = (stateMachine.PlayerTrans.position - transform.position).normalized;
+
+        if (Vector3.Dot(toTarget, transform.forward) < 0)
+        {
+            LookAtTargetInstantly();
+        }
+        else
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(target.position.x, 0, target.position.z)),
+                Time.deltaTime * rotSpeed);
+        }
+    }
+
+    void LookAtTargetInstantly()
+    {
+        Vector3 lookAt = new Vector3(stateMachine.PlayerTrans.position.x, transform.position.z, stateMachine.PlayerTrans.position.y);
+        transform.LookAt(lookAt);
     }
 
     private void OnDrawGizmosSelected()
