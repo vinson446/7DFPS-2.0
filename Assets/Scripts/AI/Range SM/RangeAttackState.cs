@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class RangeAttackState : RangeState
 {
-    [SerializeField] RangeEnemy rEnemy;
-
-    [Header("Debug")]
-    [SerializeField] bool showStateMessages;
-
     public override void EnterState()
     {
-        if (showStateMessages)
-            print("Enter Range Enemy Attack State");
-        rEnemy.Attack();
+        stateMachine.REnemy.ChangeState("Range Attack State");
+
+        stateMachine.REnemy.Attack();
     }
 }

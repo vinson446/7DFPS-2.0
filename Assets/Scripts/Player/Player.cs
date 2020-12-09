@@ -67,7 +67,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            uiGameManager.UpdateHP();
+            uiGameManager.UpdateHP(true, true);
         }
     }
 

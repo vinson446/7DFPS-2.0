@@ -7,113 +7,73 @@ public class RangeCheckState : RangeState
 {
     [SerializeField] Transform target;
 
-    [Header("Ranges")]
-    [SerializeField] float runAwayCheck;
-
     [Header("MoveSpeed")]
-    [SerializeField] bool hasRunAway;
-    [SerializeField] bool isRunningAway;
     [SerializeField] float runSpeed;
-
-    [Header("Cover Spots")]
-    [SerializeField] Transform[] coverSpots;
-    [SerializeField] int currentCoverIndex = -1;
+    public float RunSpeed => runSpeed;
+    [SerializeField] float rotSpeed;
+    public float RotSpeed => rotSpeed;
 
     [Header("Debug")]
-    [SerializeField] bool showStateMessages;
+    [SerializeField] bool debugRunAwayRange;
     [SerializeField] bool debugAttackRange;
-
-    [Header("References")]
-    [SerializeField] Transform playerTrans;
-    [SerializeField] RangeEnemy rEnemy;
-    [SerializeField] NavMeshAgent navMeshAgent;
 
     public override void EnterState()
     {
-        if (showStateMessages)
-            print("Enter Range Enemy Check State");
+        stateMachine.REnemy.ChangeState("Range Check State");
+
+        stateMachine.NavAgent.enabled = true;
     }
 
     public override void Tick()
     {
-        if (isRunningAway)
-        {
-            LookAtPlayerAgain();
-        }
-
-        LookAtTarget();
         CheckAction();
-    }
-
-    void LookAtTarget()
-    {
-        Vector3 targetPos = new Vector3(target.position.x, transform.parent.position.y, target.position.z);
-        transform.parent.LookAt(targetPos);
+        LookAtTarget();
     }
 
     void CheckAction()
     {
-        // if player is too close, run to closest cover ONCE
-        if (Vector3.Distance(transform.position, target.position) <= runAwayCheck)
+        // if player is in attack range, shoot
+        if (Vector3.Distance(transform.position, target.position) <= stateMachine.REnemy.AtkRange)
         {
-            if (!hasRunAway)
-            {
-                hasRunAway = true;
-                isRunningAway = true;
-
-                FindClosestCover();
-            }
+            stateMachine.ChangeState<RangeAttackState>();
         }
-        // else if player is in attack range, shoot
-        else if (Vector3.Distance(transform.position, target.position) <= rEnemy.AtkRange)
+        else
         {
-            if (!isRunningAway)
-            {
-                stateMachine.ChangeState<RangeAttackState>();
-            }
+            stateMachine.REnemy.OnIdleAnimation();
         }
     }
 
-    void FindClosestCover()
+    void LookAtTarget()
     {
-        float smallestDist = Mathf.Infinity;
-     
-        for (int i = 0; i < coverSpots.Length; i++)
-        {
-            float currentDist = Vector3.Distance(transform.position, coverSpots[i].position);
-            if (currentDist < smallestDist && currentCoverIndex != i)
-            {
-                smallestDist = currentDist;
-                currentCoverIndex = i;
-            }
-        }
+        Vector3 toTarget = (stateMachine.PlayerTrans.position - transform.position).normalized;
 
-        MoveToClosestCover(currentCoverIndex);
+        if (Vector3.Dot(toTarget, transform.forward) < 0)
+        {
+            LookAtTargetInstantly();
+        }
+        else
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(target.position.x, 0, target.position.z)),
+                Time.deltaTime * rotSpeed);
+        }
     }
 
-    void MoveToClosestCover(int closestCoverIndex)
+    void LookAtTargetInstantly()
     {
-        target = coverSpots[currentCoverIndex];
-
-        navMeshAgent.speed = runSpeed;
-        navMeshAgent.SetDestination(coverSpots[closestCoverIndex].position);
-    }
-
-    void LookAtPlayerAgain()
-    {
-        if (Vector3.Distance(transform.position, coverSpots[currentCoverIndex].position) < 5)
-        {
-            isRunningAway = false;
-            target = playerTrans;
-        }
+        Vector3 lookAt = new Vector3(stateMachine.PlayerTrans.position.x, transform.position.z, stateMachine.PlayerTrans.position.y);
+        transform.LookAt(lookAt);
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        if (debugAttackRange)
+
+        RangeEnemy rEnemy = GetComponentInParent<RangeEnemy>();
+        RangeRunState rangeRunState = GetComponent<RangeRunState>();
+
+        if (debugRunAwayRange)
+            Gizmos.DrawWireSphere(transform.position, rangeRunState.RunAwayCheck);
+        else if (debugAttackRange)
             Gizmos.DrawWireSphere(transform.position, rEnemy.AtkRange);
-        else
-            Gizmos.DrawWireSphere(transform.position, runAwayCheck);
     }
 }
