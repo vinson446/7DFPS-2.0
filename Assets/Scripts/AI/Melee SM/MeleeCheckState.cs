@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class MeleeCheckState : MeleeState
 {
-    [SerializeField] Transform target;
+    Transform target;
 
     [Header("Ranges")]
     [SerializeField] float aggroCheck;
@@ -23,6 +23,8 @@ public class MeleeCheckState : MeleeState
     public override void EnterState()
     {
         stateMachine.MEnemy.ChangeState("Melee Check State");
+
+        target = FindObjectOfType<Player>().transform;
 
         rotInstantly = false;
 

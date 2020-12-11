@@ -13,6 +13,15 @@ public class UIGameManager : MonoBehaviour
     [SerializeField] Slider expBar;
     [SerializeField] TextMeshProUGUI levelText;
 
+    [Header("Middle Center References")]
+    [SerializeField] TextMeshProUGUI roundCompleteText1;
+    [SerializeField] TextMeshProUGUI roundCompleteText2;
+    [SerializeField] TextMeshProUGUI newRoundText;
+
+    [Header("Top Right References")]
+    [SerializeField] TextMeshProUGUI roundText;
+    [SerializeField] TextMeshProUGUI scoreText;
+
     [Header("Bot Right References")]
     [SerializeField] Image weaponImage;
     [SerializeField] Sprite[] weaponSprites;
@@ -33,15 +42,20 @@ public class UIGameManager : MonoBehaviour
 
     // references
     Player player;
+    GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<Player>();
+        gameManager = FindObjectOfType<GameManager>();
 
         UpdateHP(false, false);
         UpdateExp();
         UpdateLevel();
+
+        UpdateRound(1);
+        UpdateScore(0);
     }
 
     // Update is called once per frame
@@ -115,5 +129,52 @@ public class UIGameManager : MonoBehaviour
     public void UpdateAmmo(int currentAmmo, float maxAmmo)
     {
         ammoText.text = currentAmmo.ToString() + " / " + maxAmmo.ToString();
+    }
+
+    public void UpdateRound(int round)
+    {
+        roundText.text = round.ToString();
+    }
+
+    public void UpdateScore(int score)
+    {
+        scoreText.text = score.ToString();
+    }
+
+    public void StartNewRoundCoroutine()
+    {
+        StartCoroutine(NewRoundCoroutine());
+    }
+
+    IEnumerator NewRoundCoroutine()
+    {
+        roundCompleteText1.gameObject.SetActive(true);
+        roundCompleteText2.gameObject.SetActive(true);
+        newRoundText.gameObject.SetActive(true);
+        roundCompleteText1.DOFade(1, 0);
+        roundCompleteText2.DOFade(1, 0);
+        newRoundText.DOFade(1, 0);
+
+        roundCompleteText1.text = "ROUND COMPLETE";
+        roundCompleteText2.text = "Starting next Round in...";
+
+        for (int i = 3; i > 0; i--)
+        {
+            newRoundText.text = i.ToString();
+
+            yield return new WaitForSeconds(1);
+        }
+
+        gameManager.StartNewRound();
+
+        roundCompleteText1.DOFade(0, 0.25f);
+        roundCompleteText2.DOFade(0, 0.25f);
+        newRoundText.DOFade(0, 0.25f);
+
+        yield return new WaitForSeconds(1);
+
+        roundCompleteText1.gameObject.SetActive(false);
+        roundCompleteText2.gameObject.SetActive(false);
+        newRoundText.gameObject.SetActive(false);
     }
 }

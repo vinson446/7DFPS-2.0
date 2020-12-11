@@ -9,6 +9,7 @@ TagManager:
   - Boss
   - Bullet
   - Bullet Spawn
+  - Cover Spots
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - 
   - PostProcessing
   - Ground
-  - 
+  - Gun
   - 
   - 
   - 

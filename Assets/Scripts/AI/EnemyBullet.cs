@@ -20,6 +20,8 @@ public class EnemyBullet : MonoBehaviour
         {
             Player player = collider.gameObject.GetComponentInParent<Player>();
             player.TakeDamage(Damage);
+
+            Destroy(gameObject);
         }
         else if (collider.gameObject.tag != "Bullet" && collider.gameObject.tag != "Bullet Spawn")
         {

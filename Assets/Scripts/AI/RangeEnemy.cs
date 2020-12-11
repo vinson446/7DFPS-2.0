@@ -103,6 +103,20 @@ public class RangeEnemy : Enemy
     public override void Die()
     {
         stateMachine.ChangeState<RangeDeathState>();
+        stateMachine.PlayerTrans.GetComponent<Player>().GainExp(Exp);
+
+        GameManager gameManager = FindObjectOfType<GameManager>();
+        gameManager.IncreaseScore(Exp);
+        gameManager.UpdateEnemyKilled();
+    }
+
+    public override void LevelUp(int round)
+    {
+        for (int i = 0; i < round; i++)
+        {
+            Damage += 1;
+            AtkSpeed += 0.1f;
+        }
     }
 
     void LookAtPlayer()

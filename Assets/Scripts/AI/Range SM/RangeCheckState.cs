@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class RangeCheckState : RangeState
 {
-    [SerializeField] Transform target;
+    Transform target;
 
     [Header("MoveSpeed")]
     [SerializeField] float runSpeed;
@@ -20,6 +20,8 @@ public class RangeCheckState : RangeState
     public override void EnterState()
     {
         stateMachine.REnemy.ChangeState("Range Check State");
+
+        target = FindObjectOfType<Player>().transform;
 
         stateMachine.NavAgent.enabled = true;
     }
