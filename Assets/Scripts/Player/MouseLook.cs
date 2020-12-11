@@ -12,6 +12,7 @@ public class MouseLook : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Cursor.lockState = Cursor.lockState;
         Cursor.visible = false;
     }
 
