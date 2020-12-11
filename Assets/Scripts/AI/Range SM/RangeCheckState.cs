@@ -27,7 +27,7 @@ public class RangeCheckState : RangeState
     public override void Tick()
     {
         CheckAction();
-        LookAtTarget();
+        // LookAtTarget();
     }
 
     void CheckAction()
@@ -45,22 +45,23 @@ public class RangeCheckState : RangeState
 
     void LookAtTarget()
     {
+        /*
         Vector3 toTarget = (stateMachine.PlayerTrans.position - transform.position).normalized;
 
         if (Vector3.Dot(toTarget, transform.forward) < 0)
         {
             LookAtTargetInstantly();
         }
-        else
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(target.position.x, 0, target.position.z)),
-                Time.deltaTime * rotSpeed);
-        }
+        else 
+        */
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(target.position.x, 0, target.position.z)),
+            Time.deltaTime * rotSpeed);
     }
 
     void LookAtTargetInstantly()
     {
-        Vector3 lookAt = new Vector3(stateMachine.PlayerTrans.position.x, transform.position.z, stateMachine.PlayerTrans.position.y);
+        Vector3 lookAt = new Vector3(stateMachine.PlayerTrans.position.x, transform.position.y, stateMachine.PlayerTrans.position.z);
         transform.LookAt(lookAt);
     }
 

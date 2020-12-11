@@ -59,6 +59,8 @@ public class UIGameManager : MonoBehaviour
 
         if (needImage)
         {
+            StopAllCoroutines();
+
             if (hurt)
             {
                 StartCoroutine(HPHurtCoroutine());
@@ -79,6 +81,8 @@ public class UIGameManager : MonoBehaviour
         yield return new WaitForSeconds(hurtDuration);
 
         HPImage.DOFade(0, hurtFadeOutDuration);
+
+        yield return new WaitForSeconds(hurtFadeOutDuration);
     }
 
     IEnumerator HPHealCoroutine()
@@ -89,7 +93,9 @@ public class UIGameManager : MonoBehaviour
 
         yield return new WaitForSeconds(healDuration);
 
-        HPImage.DOFade(1, healFadeInDuration);
+        HPImage.DOFade(0, healFadeOutDuration);
+
+        yield return new WaitForSeconds(healFadeOutDuration);
     }
 
     public void UpdateExp()

@@ -8,6 +8,17 @@ public class MeleeEnemy : Enemy
     [Header("Combat Settings")]
     [SerializeField] string weapon;
     public string Weapon => weapon;
+    [SerializeField] Transform axeHitBox;
+    public Transform AxeHitBox => axeHitBox;
+    [SerializeField] Transform knifeHitBox;
+    public Transform KnifeHitBox => knifeHitBox;
+
+    [SerializeField] Transform fistHitBox;
+    public Transform FistHitBox => fistHitBox;
+
+    [SerializeField] float axeWaitTime;
+    [SerializeField] float knifeWaitTime;
+    [SerializeField] float fistWaitTime;
 
     // state Machine
     [Header("State Machine")]
@@ -51,17 +62,60 @@ public class MeleeEnemy : Enemy
 
             OnAttackAnimation();
 
-            yield return new WaitForSeconds(0.5f);
+            Collider[] colls;
+            if (weapon == "Axe")
+            {
+                yield return new WaitForSeconds(axeWaitTime);
 
-            stateMachine.PlayerTrans.GetComponent<Player>().TakeDamage(Damage);
+                colls = Physics.OverlapSphere(axeHitBox.position, AtkRange);
+                foreach (Collider coll in colls)
+                {
+                    if (coll.tag == "Player")
+                    {
+                        stateMachine.PlayerTrans.GetComponent<Player>().TakeDamage(Damage);
 
+                        break;
+                    }
+                }
+            }
+            else if (weapon == "Knife")
+            {
+                yield return new WaitForSeconds(knifeWaitTime);
+
+                colls = Physics.OverlapSphere(knifeHitBox.position, AtkRange);
+                foreach (Collider coll in colls)
+                {
+                    if (coll.tag == "Player")
+                    {
+                        stateMachine.PlayerTrans.GetComponent<Player>().TakeDamage(Damage);
+                        break;
+                    }
+                }
+            }
+            else if (weapon == "Fist")
+            {
+                yield return new WaitForSeconds(knifeWaitTime);
+
+                colls = Physics.OverlapSphere(knifeHitBox.position, AtkRange);
+                foreach (Collider coll in colls)
+                {
+                    if (coll.tag == "Player")
+                    {
+                        stateMachine.PlayerTrans.GetComponent<Player>().TakeDamage(Damage);
+                        break;
+                    }
+                }
+            }
+
+            // attack once per second
             yield return new WaitForSeconds(1f);
 
             ResetAnimBools();
 
-        } while (Vector3.Distance(transform.position, stateMachine.PlayerTrans.position) <= AtkRange);
+        } while (Vector3.Distance(transform.position, stateMachine.PlayerTrans.position) <= AtkRange && !isDead);
 
-        stateMachine.ChangeState<MeleeCheckState>();
+        if (!isDead)
+            stateMachine.ChangeState<MeleeCheckState>();
     }
 
     public override void Die()

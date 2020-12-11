@@ -100,12 +100,18 @@ public class GunManager : MonoBehaviour
             {
                 case 0:
                     bullet = Instantiate(bulletObjs[0], bulletSpawn.position, bulletSpawn.rotation);
+                    Bullet b1 = bullet.GetComponent<Bullet>();
+                    b1.Damage = player.RifleDamage;
                     break;
                 case 1:
                     bullet = Instantiate(bulletObjs[1], bulletSpawn.position, bulletSpawn.rotation);
+                    Bullet b2 = bullet.GetComponent<Bullet>();
+                    b2.Damage = player.ShotgunDamage;
                     break;
                 case 2:
                     bullet = Instantiate(bulletObjs[2], bulletSpawn.position, bulletSpawn.rotation);
+                    Bullet b3 = bullet.GetComponent<Bullet>();
+                    b3.Damage = player.PistolDamage;
                     break;
             }
 
