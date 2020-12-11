@@ -5569,7 +5569,7 @@ GameObject:
   - component: {fileID: 1665096527}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5656,9 +5656,13 @@ MonoBehaviour:
   maximumExp: 50
   currentHP: 100
   maximumHP: 100
-  damage: 3
+  rifleDamage: 2
+  shotgunDamage: 3
+  pistolDamage: 1
   fireRate: 10
   bulletSize: 1
+  cantTakeDamage: 0
+  cantTakeDamageDuration: 2
   hpIncrementAmt: 25
   expIncrementAmt: 50
   damageUpgradeAmt: 3

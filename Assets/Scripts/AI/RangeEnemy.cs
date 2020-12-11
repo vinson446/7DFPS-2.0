@@ -9,6 +9,18 @@ public class RangeEnemy : Enemy
     [SerializeField] string weapon;
     public string Weapon => weapon;
 
+    [SerializeField] float fireRate;
+    public float FireRate => fireRate;
+
+    [Header("Combat References")]
+    [SerializeField] GameObject bullet;
+    [SerializeField] Transform bulletSpawn;
+    [SerializeField] float bulletForce;
+
+    [Header("Rot Settings")]
+    [SerializeField] float rotSpeed;
+    public float RotSpeed => rotSpeed;
+
     // state Machine
     [Header("State Machine")]
     [SerializeField] bool isIdle;
@@ -40,6 +52,11 @@ public class RangeEnemy : Enemy
             StopAllCoroutines();
             stateMachine.ChangeState<RangeRunState>();
         }
+
+        if (isAttacking)
+        {
+            LookAtPlayer();
+        } 
     }
 
     public override void Attack()
@@ -54,21 +71,33 @@ public class RangeEnemy : Enemy
         do
         {
             transform.position = initPos;
-            LookAtPlayer();
+
+            // FixRotation();
 
             OnAttackAnimation();
 
-            yield return new WaitForSeconds(0.5f);
+            GameObject bull = Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
 
-            stateMachine.PlayerTrans.GetComponent<Player>().TakeDamage(Damage);
+            EnemyBullet b1 = bull.GetComponent<EnemyBullet>();
+            b1.Damage = Damage;
 
-            yield return new WaitForSeconds(1f);
+            bull.transform.LookAt(stateMachine.PlayerTrans);
+            bull.transform.rotation *= Quaternion.Euler(90, 0, 0);
+
+            Rigidbody rb = bull.GetComponent<Rigidbody>();
+
+            // rb.AddForce(bulletForce * bulletSpawn.right);
+            var dir = stateMachine.PlayerTrans.position - bulletSpawn.position;
+            rb.AddForce(bulletForce * dir);
+
+            yield return new WaitForSeconds(1 / fireRate);
 
             ResetAnimBools();
 
-        } while ((Vector3.Distance(transform.position, stateMachine.PlayerTrans.position) <= AtkRange));
+        } while ((Vector3.Distance(transform.position, stateMachine.PlayerTrans.position) <= AtkRange) && !isDead);
 
-        stateMachine.ChangeState<RangeCheckState>();
+        if (!isDead)
+            stateMachine.ChangeState<RangeCheckState>();
     }
 
     public override void Die()
@@ -80,9 +109,15 @@ public class RangeEnemy : Enemy
     {
         Vector3 lookAt = new Vector3(stateMachine.PlayerTrans.position.x, transform.position.y, stateMachine.PlayerTrans.position.z);
         transform.LookAt(lookAt);
+        transform.rotation *= Quaternion.Euler(0, 45, 0);
+
+        /*
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(stateMachine.PlayerTrans.position.x, 0, 
+            stateMachine.PlayerTrans.position.z)), Time.deltaTime * rotSpeed);
 
         // to fix attack animation
-        transform.Rotate(0, 45, 0);
+        // transform.Rotate(0, 45, 0);
+        */
     }
 
     // animation

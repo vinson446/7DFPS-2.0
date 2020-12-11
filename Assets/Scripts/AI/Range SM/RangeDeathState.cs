@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class RangeDeathState : RangeState
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void EnterState()
     {
-        
-    }
+        stateMachine.REnemy.ChangeState("Range Death State");
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        stateMachine.REnemy.OnDeathAnimation();
+        // stateMachine.REnemy.enabled = false;
+
+        stateMachine.NavAgent.enabled = false;
+
+        Collider coll = gameObject.GetComponentInParent<Collider>();
+        coll.enabled = false;
     }
 }

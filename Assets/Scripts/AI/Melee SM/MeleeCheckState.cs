@@ -101,6 +101,15 @@ public class MeleeCheckState : MeleeState
         if (debugAggroRange)
             Gizmos.DrawWireSphere(transform.position, aggroCheck);
         else if (debugAttackRange)
-            Gizmos.DrawWireSphere(transform.position, mEnemy.AtkRange);
+        {
+            if (mEnemy.Weapon == "Axe")
+            {
+                Gizmos.DrawWireSphere(mEnemy.AxeHitBox.position, mEnemy.AtkRange);
+            }
+            else if (mEnemy.Weapon == "Knife")
+            {
+                Gizmos.DrawWireSphere(mEnemy.KnifeHitBox.position, mEnemy.AtkRange);
+            }
+        }
     }
 }

@@ -21,14 +21,24 @@ public class Player : MonoBehaviour
     public int MaximumHP => maximumHP;
 
     [Header("Combat Settings")]
-    [SerializeField] int damage;
-    public int Damage => damage;
+    [SerializeField] int rifleDamage;
+    public int RifleDamage => rifleDamage;
+
+    [SerializeField] int shotgunDamage;
+    public int ShotgunDamage => shotgunDamage;
+
+    [SerializeField] int pistolDamage;
+    public int PistolDamage => PistolDamage;
 
     [SerializeField] float fireRate;
     public float FireRate => fireRate;
 
     [SerializeField] float bulletSize;
     public float BulletSize => bulletSize;
+
+    [SerializeField] bool cantTakeDamage;
+    public bool CantTakeDamage => cantTakeDamage;
+    [SerializeField] float cantTakeDamageDuration;
 
     [Header("Level Up Settings")]
     [SerializeField] int hpIncrementAmt;
@@ -59,16 +69,30 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHP -= damage;
+        if (!cantTakeDamage)
+        {
+            currentHP -= damage;
 
-        if (currentHP <= 0)
-        {
-            Die();
+            if (currentHP <= 0)
+            {
+                Die();
+            }
+            else
+            {
+                uiGameManager.UpdateHP(true, true);
+            }
+
+            StartCoroutine(CantTakeDamageCoroutine());
         }
-        else
-        {
-            uiGameManager.UpdateHP(true, true);
-        }
+    }
+
+    IEnumerator CantTakeDamageCoroutine()
+    {
+        cantTakeDamage = true;
+
+        yield return new WaitForSeconds(cantTakeDamageDuration);
+
+        cantTakeDamage = false;
     }
 
     public void GainExp(int exp)
@@ -98,7 +122,10 @@ public class Player : MonoBehaviour
 
     public void UpgradeDamage()
     {
-        damage += damageUpgradeAmt;
+        rifleDamage += damageUpgradeAmt;
+        shotgunDamage += damageUpgradeAmt;
+        pistolDamage += damageUpgradeAmt;
+
     }
 
     public void UpgradeFireRate()
