@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     public int ShotgunDamage => shotgunDamage;
 
     [SerializeField] int pistolDamage;
-    public int PistolDamage => PistolDamage;
+    public int PistolDamage => pistolDamage;
 
     [SerializeField] float fireRate;
     public float FireRate => fireRate;
@@ -77,10 +77,8 @@ public class Player : MonoBehaviour
             {
                 Die();
             }
-            else
-            {
-                uiGameManager.UpdateHP(true, true);
-            }
+
+            uiGameManager.UpdateHP(true, true);
 
             StartCoroutine(CantTakeDamageCoroutine());
         }

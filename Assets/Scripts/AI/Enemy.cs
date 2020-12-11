@@ -9,11 +9,17 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] int maximumHP;
 
     [Header("Combat Settings")]
+    [SerializeField] int level;
+    public int Level { get => level; set => level = value; }
+
+    [SerializeField] int exp;
+    public int Exp { get => exp; set => exp = value; }
+
     [SerializeField] int damage;
-    public int Damage => damage;
+    public int Damage { get => damage; set => damage = value; }
 
     [SerializeField] float atkSpeed;
-    public float AtkSpeed => atkSpeed;
+    public float AtkSpeed { get => atkSpeed; set => atkSpeed = value; }
 
     [SerializeField] float atkRange;
     public float AtkRange => atkRange;
@@ -48,4 +54,7 @@ public abstract class Enemy : MonoBehaviour
     {
         currentState = state;
     }
+
+    public abstract void LevelUp(int round);
+
 }

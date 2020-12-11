@@ -94,9 +94,9 @@ public class MeleeEnemy : Enemy
             }
             else if (weapon == "Fist")
             {
-                yield return new WaitForSeconds(knifeWaitTime);
+                yield return new WaitForSeconds(fistWaitTime);
 
-                colls = Physics.OverlapSphere(knifeHitBox.position, AtkRange);
+                colls = Physics.OverlapSphere(fistHitBox.position, AtkRange);
                 foreach (Collider coll in colls)
                 {
                     if (coll.tag == "Player")
@@ -108,7 +108,7 @@ public class MeleeEnemy : Enemy
             }
 
             // attack once per second
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(AtkSpeed);
 
             ResetAnimBools();
 
@@ -121,6 +121,19 @@ public class MeleeEnemy : Enemy
     public override void Die()
     {
         stateMachine.ChangeState<MeleeDeathState>();
+        stateMachine.PlayerTrans.GetComponent<Player>().GainExp(Exp);
+
+        GameManager gameManager = FindObjectOfType<GameManager>();
+        gameManager.IncreaseScore(Exp);
+        gameManager.UpdateEnemyKilled();
+    }
+
+    public override void LevelUp(int round)
+    {
+        for (int i = 0; i < round; i++)
+        {
+            Damage += 2;
+        }
     }
 
     void LookAtPlayer()

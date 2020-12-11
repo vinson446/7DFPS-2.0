@@ -8,6 +8,7 @@ public class MeleeEnemyAnimator : MonoBehaviour
     const string RunState = "Run";
     const string KnifeState = "Knife";
     const string AxeState = "Axe";
+    const string FistState = "Fist";
     const string DeathState = "Death";
 
     MeleeEnemy mEnemy;
@@ -45,6 +46,11 @@ public class MeleeEnemyAnimator : MonoBehaviour
         animator.CrossFadeInFixedTime(AxeState, 0.2f);
     }
 
+    void OnFist()
+    {
+        animator.CrossFadeInFixedTime(FistState, 0.2f);
+    }
+
     void OnDeath()
     {
         animator.CrossFadeInFixedTime(DeathState, 0.2f);
@@ -58,6 +64,8 @@ public class MeleeEnemyAnimator : MonoBehaviour
             mEnemy.OnAttack += OnKnife;
         else if (mEnemy.Weapon == "Axe")
             mEnemy.OnAttack += OnAxe;
+        else if (mEnemy.Weapon == "Fist")
+            mEnemy.OnAttack += OnFist;
         mEnemy.OnDeath += OnDeath;
     }
 
@@ -69,6 +77,8 @@ public class MeleeEnemyAnimator : MonoBehaviour
             mEnemy.OnAttack -= OnKnife;
         else if (mEnemy.Weapon == "Axe")
             mEnemy.OnAttack -= OnAxe;
+        else if (mEnemy.Weapon == "Fist")
+            mEnemy.OnAttack -= OnFist;
         mEnemy.OnDeath -= OnDeath;
     }
 }

@@ -11,7 +11,7 @@ public class RangeRunState : RangeState
     public bool HasRunAway => hasRunAway;
     [SerializeField] bool isRunningAway;
 
-    [SerializeField] Transform[] coverSpots;
+    GameObject[] coverSpots;
     [SerializeField] int currentCoverIndex = -1;
 
     RangeCheckState rangeCheckState;
@@ -25,13 +25,14 @@ public class RangeRunState : RangeState
         hasRunAway = true;
         isRunningAway = true;
 
+        coverSpots = GameObject.FindGameObjectsWithTag("Cover Spots");
         FindClosestCover();
     }
 
     public override void Tick()
     {
-        print("Distance from closest coer: " + Vector3.Distance(transform.position, coverSpots[currentCoverIndex].position));
-        if (Vector3.Distance(transform.position, coverSpots[currentCoverIndex].position) <= 5 && hasRunAway)
+        print("Distance from closest coer: " + Vector3.Distance(transform.position, coverSpots[currentCoverIndex].transform.position));
+        if (Vector3.Distance(transform.position, coverSpots[currentCoverIndex].transform.position) <= 5 && hasRunAway)
         {
             stateMachine.NavAgent.enabled = false;
 
@@ -46,7 +47,7 @@ public class RangeRunState : RangeState
 
         for (int i = 0; i < coverSpots.Length; i++)
         {
-            float currentDist = Vector3.Distance(transform.position, coverSpots[i].position);
+            float currentDist = Vector3.Distance(transform.position, coverSpots[i].transform.position);
 
             if (currentDist < smallestDist && currentCoverIndex != i)
             {
@@ -62,9 +63,12 @@ public class RangeRunState : RangeState
     {
         // Transform target = coverSpots[currentCoverIndex];
 
-        stateMachine.NavAgent.speed = rangeCheckState.RunSpeed;
-        stateMachine.NavAgent.SetDestination(coverSpots[currentCoverIndex].position);
+        if (stateMachine.NavAgent.enabled == true)
+        {
+            stateMachine.NavAgent.speed = rangeCheckState.RunSpeed;
+            stateMachine.NavAgent.SetDestination(coverSpots[currentCoverIndex].transform.position);
 
-        stateMachine.REnemy.OnRunAnimation();
+            stateMachine.REnemy.OnRunAnimation();
+        }
     }
 }
