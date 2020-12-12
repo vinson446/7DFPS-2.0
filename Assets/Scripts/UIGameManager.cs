@@ -73,8 +73,6 @@ public class UIGameManager : MonoBehaviour
 
         if (needImage)
         {
-            StopAllCoroutines();
-
             if (hurt)
             {
                 StartCoroutine(HPHurtCoroutine());
@@ -161,10 +159,11 @@ public class UIGameManager : MonoBehaviour
         for (int i = 3; i > 0; i--)
         {
             newRoundText.text = i.ToString();
-
+            print("?");
             yield return new WaitForSeconds(1);
+            print("??");
         }
-
+        print("???");
         gameManager.StartNewRound();
 
         roundCompleteText1.DOFade(0, 0.25f);

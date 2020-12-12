@@ -31,7 +31,8 @@ public class RangeRunState : RangeState
 
     public override void Tick()
     {
-        print("Distance from closest coer: " + Vector3.Distance(transform.position, coverSpots[currentCoverIndex].transform.position));
+        // print("Distance from closest coer: " + Vector3.Distance(transform.position, coverSpots[currentCoverIndex].transform.position));
+
         if (Vector3.Distance(transform.position, coverSpots[currentCoverIndex].transform.position) <= 5 && hasRunAway)
         {
             stateMachine.NavAgent.enabled = false;
