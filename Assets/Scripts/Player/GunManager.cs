@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class GunManager : MonoBehaviour
 {
+    [Header("Weapon GameObjs")]
+    [SerializeField] GameObject[] weaponObjs;
+    [SerializeField] GameObject[] ammoObjs;
+
     [Header("Shoot Settings")]
-    [SerializeField] GameObject[] bulletObjs;
     [SerializeField] float bulletForce;
-    [SerializeField] Transform bulletSpawn;
+    [SerializeField] Transform rifleBulletSpawn;
+    [SerializeField] Transform[] shotgunBulletSpawn;
+    [SerializeField] Transform pistolBulletSpawn;
     GameObject bullet;
     bool isReloading;
 
@@ -29,6 +34,9 @@ public class GunManager : MonoBehaviour
     [SerializeField] int riflePickupAmt;
     [SerializeField] int shotgunPickupAmt;
     [SerializeField] int pistolPickupAmt;
+
+    [Header("FX")]
+    [SerializeField] ParticleSystem[] muzzleFlashFX;
 
     int currentWeapon;
     float shootCD;
@@ -71,6 +79,11 @@ public class GunManager : MonoBehaviour
             shootCD = Time.time + 1 / player.FireRate;
             Shoot();
         }
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            if (muzzleFlashFX[currentWeapon].gameObject.activeInHierarchy)
+                muzzleFlashFX[currentWeapon].gameObject.SetActive(false);
+        }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -78,9 +91,13 @@ public class GunManager : MonoBehaviour
         }
     }
 
+
     void Shoot()
     {
-        GameObject bullet = bulletObjs[0];
+        if (!muzzleFlashFX[currentWeapon].gameObject.activeInHierarchy)
+            muzzleFlashFX[currentWeapon].gameObject.SetActive(true);
+        
+        GameObject bullet = ammoObjs[0];
 
         if (currentWeapon == 0 && currentRifleAmmo <= 0)
         {
@@ -96,32 +113,43 @@ public class GunManager : MonoBehaviour
         }
         else
         {
+            float x = Screen.width / 2;
+            float y = Screen.height / 2;
+            var ray = Camera.main.ScreenPointToRay(new Vector3(x, y, 0));
+
             switch (currentWeapon)
             {
                 case 0:
-                    bullet = Instantiate(bulletObjs[0], bulletSpawn.position, bulletSpawn.rotation);
+                    bullet = Instantiate(ammoObjs[0], rifleBulletSpawn.position, rifleBulletSpawn.rotation);
                     Bullet b1 = bullet.GetComponent<Bullet>();
                     b1.Damage = player.RifleDamage;
+                    b1.transform.localScale = new Vector3(player.BulletSize, player.BulletSize, player.BulletSize);
+
+                    Rigidbody rb1 = bullet.GetComponent<Rigidbody>();
+                    rb1.AddForce(bulletForce * ray.direction);
                     break;
                 case 1:
-                    bullet = Instantiate(bulletObjs[1], bulletSpawn.position, bulletSpawn.rotation);
-                    Bullet b2 = bullet.GetComponent<Bullet>();
-                    b2.Damage = player.ShotgunDamage;
+                    foreach(Transform t in shotgunBulletSpawn)
+                    {
+                        bullet = Instantiate(ammoObjs[1], t.position, t.rotation);
+                        Bullet b2 = bullet.GetComponent<Bullet>();
+                        b2.Damage = player.ShotgunDamage;
+                        b2.transform.localScale = new Vector3(player.BulletSize, player.BulletSize, player.BulletSize);
+
+                        Rigidbody rb2 = bullet.GetComponent<Rigidbody>();
+                        rb2.AddForce(bulletForce * t.transform.forward);
+                    }
                     break;
                 case 2:
-                    bullet = Instantiate(bulletObjs[2], bulletSpawn.position, bulletSpawn.rotation);
+                    bullet = Instantiate(ammoObjs[2], pistolBulletSpawn.position, pistolBulletSpawn.rotation);
                     Bullet b3 = bullet.GetComponent<Bullet>();
                     b3.Damage = player.PistolDamage;
+                    b3.transform.localScale = new Vector3(player.BulletSize, player.BulletSize, player.BulletSize);
+
+                    Rigidbody rb3 = bullet.GetComponent<Rigidbody>();
+                    rb3.AddForce(bulletForce * ray.direction);
                     break;
             }
-
-            float x = Screen.width / 2;
-            float y = Screen.height / 2;
-
-            var ray = Camera.main.ScreenPointToRay(new Vector3(x, y, 0));
-
-            Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            rb.AddForce(bulletForce * ray.direction);
 
             UseBulletOnBackend();
         }
@@ -135,6 +163,9 @@ public class GunManager : MonoBehaviour
 
     IEnumerator ReloadCoroutine()
     {
+        if (muzzleFlashFX[currentWeapon].gameObject.activeInHierarchy)
+            muzzleFlashFX[currentWeapon].gameObject.SetActive(false);
+
         isReloading = true;
 
         yield return new WaitForSeconds(1f);
@@ -193,6 +224,12 @@ public class GunManager : MonoBehaviour
 
     public void ChangeWeaponOnBackend(int index)
     {
+        foreach(GameObject o in weaponObjs)
+        {
+            o.SetActive(false);
+        }
+        weaponObjs[index].SetActive(true);
+
         currentWeapon = index;
 
         UpdateAmmoUI();

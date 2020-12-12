@@ -12,7 +12,7 @@ public class ParticleTestScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             muzzleFlash.Play();
-        }else if (Input.GetMouseButtonUp(0))
+        } else if (Input.GetMouseButtonUp(0))
         {
             muzzleFlash.Stop();
         }

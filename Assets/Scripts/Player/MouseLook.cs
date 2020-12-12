@@ -7,6 +7,9 @@ public class MouseLook : MonoBehaviour
     [SerializeField] float mouseSens = 100;
     [SerializeField] Transform playerTrans;
 
+    [SerializeField] float minYClamp;
+    [SerializeField] float maxYClamp;
+
     float xRot = 0;
 
     // Start is called before the first frame update
@@ -28,7 +31,7 @@ public class MouseLook : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y") * mouseSens * Time.deltaTime;
 
         xRot -= mouseY;
-        xRot = Mathf.Clamp(xRot, -90, 90);
+        xRot = Mathf.Clamp(xRot, minYClamp, maxYClamp);
 
         transform.localRotation = Quaternion.Euler(xRot, 0, 0);
         playerTrans.Rotate(Vector3.up * mouseX);

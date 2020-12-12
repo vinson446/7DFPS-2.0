@@ -131,7 +131,7 @@ public class UIGameManager : MonoBehaviour
 
     public void UpdateRound(int round)
     {
-        roundText.text = round.ToString();
+
     }
 
     public void UpdateScore(int score)

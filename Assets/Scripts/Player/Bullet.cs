@@ -25,6 +25,7 @@ public class Bullet : MonoBehaviour
             MeleeEnemy mEnemy = collider.gameObject.GetComponent<MeleeEnemy>();
             mEnemy.TakeDamage(Damage);
 
+            print("a");
             Destroy(gameObject);
         }
         else if (collider.gameObject.tag == "R Enemy")
@@ -32,10 +33,12 @@ public class Bullet : MonoBehaviour
             RangeEnemy rEnemy = collider.gameObject.GetComponent<RangeEnemy>();
             rEnemy.TakeDamage(Damage);
 
+            print("b");
             Destroy(gameObject);
         }
-        else if (collider.gameObject.tag != "Bullet" && collider.gameObject.tag != "Bullet Spawn")
+        else if (collider.gameObject.tag != "Bullet" && collider.gameObject.tag != "Bullet Spawn" && collider.gameObject.tag != "Player")
         {
+            print(collider.name);
             Destroy(gameObject);
         }
     }
