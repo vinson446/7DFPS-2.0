@@ -32,6 +32,8 @@ public abstract class Enemy : MonoBehaviour
 
     EnemyUI enemyUI;
 
+    bool isDead;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -51,9 +53,10 @@ public abstract class Enemy : MonoBehaviour
 
         enemyUI.UpdateHP();
 
-        if (currentHP <= 0)
+        if (currentHP <= 0 && !isDead)
         {
             Die();
+            isDead = true;
         }
     }
 

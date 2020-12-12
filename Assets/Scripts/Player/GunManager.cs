@@ -9,6 +9,7 @@ public class GunManager : MonoBehaviour
     [SerializeField] GameObject[] ammoObjs;
 
     [Header("Shoot Settings")]
+    float fireRate;
     [SerializeField] float bulletForce;
     [SerializeField] Transform rifleBulletSpawn;
     [SerializeField] Transform[] shotgunBulletSpawn;
@@ -37,8 +38,9 @@ public class GunManager : MonoBehaviour
 
     [Header("FX")]
     [SerializeField] ParticleSystem[] muzzleFlashFX;
+    bool showingFX;
 
-    int currentWeapon;
+    [SerializeField] int currentWeapon;
     float shootCD;
 
     // references
@@ -76,13 +78,12 @@ public class GunManager : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse0) && Time.time >= shootCD && !isReloading)
         {
-            shootCD = Time.time + 1 / player.FireRate;
+            shootCD = Time.time + 1 / fireRate;
             Shoot();
         }
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            if (muzzleFlashFX[currentWeapon].gameObject.activeInHierarchy)
-                muzzleFlashFX[currentWeapon].gameObject.SetActive(false);
+            ShowMuzzleFlash(false);
         }
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -91,11 +92,27 @@ public class GunManager : MonoBehaviour
         }
     }
 
+    void ShowMuzzleFlash(bool yes)
+    {
+        if (yes)
+        {
+            if (!muzzleFlashFX[currentWeapon].gameObject.activeInHierarchy)
+            {
+                muzzleFlashFX[currentWeapon].gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            if (muzzleFlashFX[currentWeapon].gameObject.activeInHierarchy)
+            {
+                muzzleFlashFX[currentWeapon].gameObject.SetActive(false);
+            }
+        }
+    }
 
     void Shoot()
     {
-        if (!muzzleFlashFX[currentWeapon].gameObject.activeInHierarchy)
-            muzzleFlashFX[currentWeapon].gameObject.SetActive(true);
+        ShowMuzzleFlash(true);
         
         GameObject bullet = ammoObjs[0];
 
@@ -163,8 +180,7 @@ public class GunManager : MonoBehaviour
 
     IEnumerator ReloadCoroutine()
     {
-        if (muzzleFlashFX[currentWeapon].gameObject.activeInHierarchy)
-            muzzleFlashFX[currentWeapon].gameObject.SetActive(false);
+        ShowMuzzleFlash(false);
 
         isReloading = true;
 
@@ -231,8 +247,23 @@ public class GunManager : MonoBehaviour
         weaponObjs[index].SetActive(true);
 
         currentWeapon = index;
+        
+        if (currentWeapon == 0)
+        {
+            fireRate = player.RifleFireRate;
+        }
+        else if (currentWeapon == 1)
+        {
+            fireRate = player.ShotgunFireRate;
+        }
+        else if (currentWeapon == 2)
+        {
+            fireRate = player.PistolFireRate;
+        }
 
         UpdateAmmoUI();
+
+        uiGameManager.UpdateWeaponImage(currentWeapon);
     }
 
     public void UseBulletOnBackend()

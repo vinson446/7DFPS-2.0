@@ -109,10 +109,8 @@ public class RangeEnemy : Enemy
         gameManager.IncreaseScore(Exp);
         gameManager.UpdateEnemyKilled();
 
-        /*
-        EnemyUI enemyUI = gameObject.transform.parent.GetComponentInChildren<EnemyUI>();
-        enemyUI.UpdateHP();
-        */
+        EnemyUI enemyUI = stateMachine.gameObject.transform.parent.GetComponentInChildren<EnemyUI>();
+        enemyUI.TurnOnOffUI(false);
     }
 
     public override void LevelUp(int round)

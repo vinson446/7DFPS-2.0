@@ -12,12 +12,15 @@ public class GameManager : MonoBehaviour
     public int CurrentScore { get => currentScore; set => currentScore = value; }
 
     [SerializeField] int numEnemiesKilledThisRound;
+    public int NumEnemiesKilledThisRound => numEnemiesKilledThisRound;
+
     [SerializeField] int numEnemiesKilledTotal;
     [SerializeField] bool isStartingNewRound;
 
     [Header("Spawn Settings")]
     [SerializeField] int currentNumEnemiesSpawned;
     [SerializeField] int totalNumEnemiesToSpawn;
+    public int TotalNumEnemiesToSpawn => totalNumEnemiesToSpawn;
     [SerializeField] float timeBetweenSpawn1;
     [SerializeField] float timeBetweenSpawn2;
     [SerializeField] float timeBetweenWaves;
@@ -63,6 +66,8 @@ public class GameManager : MonoBehaviour
     {
         IncreaseRound();
 
+        uiGameManager.ShowEnemyCount();
+
         StartCoroutine(SpawnEnemyCoroutine());
     }
 
@@ -89,9 +94,13 @@ public class GameManager : MonoBehaviour
         numEnemiesKilledThisRound += 1;
         numEnemiesKilledTotal += 1;
 
+        uiGameManager.ShowEnemyCount();
+
         if (numEnemiesKilledThisRound >= totalNumEnemiesToSpawn && !isStartingNewRound)
         {
             numEnemiesKilledThisRound = 0;
+            uiGameManager.ShowEnemyCount();
+
             uiGameManager.StartNewRoundCoroutine();
             isStartingNewRound = true;
         }
@@ -128,8 +137,6 @@ public class GameManager : MonoBehaviour
                     yield return new WaitForSeconds(Random.Range(timeBetweenSpawn1, timeBetweenSpawn2));
                 }
             }
-
-            print(currentNumEnemiesSpawned);
 
             yield return new WaitForSeconds(timeBetweenWaves);
         }

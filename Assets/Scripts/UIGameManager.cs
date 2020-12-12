@@ -21,6 +21,7 @@ public class UIGameManager : MonoBehaviour
     [Header("Top Right References")]
     [SerializeField] TextMeshProUGUI roundText;
     [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI enemyCountText;
 
     [Header("Bot Right References")]
     [SerializeField] Image weaponImage;
@@ -110,6 +111,11 @@ public class UIGameManager : MonoBehaviour
         yield return new WaitForSeconds(healFadeOutDuration);
     }
 
+    public void ShowEnemyCount()
+    {
+        enemyCountText.text = gameManager.NumEnemiesKilledThisRound.ToString() + " / " + gameManager.TotalNumEnemiesToSpawn.ToString();
+    }
+
     public void UpdateExp()
     {
         expBar.maxValue = player.MaximumExp;
@@ -124,6 +130,11 @@ public class UIGameManager : MonoBehaviour
         UpdateExp();
     }
 
+    public void UpdateWeaponImage(int index)
+    {
+        weaponImage.sprite = weaponSprites[index];
+    }
+
     public void UpdateAmmo(int currentAmmo, float maxAmmo)
     {
         ammoText.text = currentAmmo.ToString() + " / " + maxAmmo.ToString();
@@ -131,7 +142,7 @@ public class UIGameManager : MonoBehaviour
 
     public void UpdateRound(int round)
     {
-
+        roundText.text = round.ToString();
     }
 
     public void UpdateScore(int score)
@@ -159,11 +170,11 @@ public class UIGameManager : MonoBehaviour
         for (int i = 3; i > 0; i--)
         {
             newRoundText.text = i.ToString();
-            print("?");
+
             yield return new WaitForSeconds(1);
-            print("??");
+
         }
-        print("???");
+
         gameManager.StartNewRound();
 
         roundCompleteText1.DOFade(0, 0.25f);

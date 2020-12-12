@@ -30,8 +30,14 @@ public class Player : MonoBehaviour
     [SerializeField] int pistolDamage;
     public int PistolDamage => pistolDamage;
 
-    [SerializeField] float fireRate;
-    public float FireRate => fireRate;
+    [SerializeField] float rifleFireRate;
+    public float RifleFireRate => rifleFireRate;
+
+    [SerializeField] float shotgunFireRate;
+    public float ShotgunFireRate => shotgunFireRate;
+
+    [SerializeField] float pistolFireRate;
+    public float PistolFireRate => pistolFireRate;
 
     [SerializeField] float bulletSize;
     public float BulletSize => bulletSize;
@@ -43,8 +49,15 @@ public class Player : MonoBehaviour
     [Header("Level Up Settings")]
     [SerializeField] int hpIncrementAmt;
     [SerializeField] int expIncrementAmt;
-    [SerializeField] int damageUpgradeAmt;
-    [SerializeField] float fireRateUpgrade;
+
+    [SerializeField] int rifleDamageUpgradeAmt;
+    [SerializeField] int shotgunDamageUpgradeAmt;
+    [SerializeField] int pistolDamageUpgradeAmt;
+
+    [SerializeField] float rifleFireRateUpgrade;
+    [SerializeField] float shotgunFireRateUpgrade;
+    [SerializeField] float pistolFireRateUpgrade;
+
     [SerializeField] float bulletSizeUpgrade;
 
     // events
@@ -116,24 +129,24 @@ public class Player : MonoBehaviour
         maximumExp += expIncrementAmt;
 
         uiGameManager.UpdateLevel();
+
+        UpgradeDamage();
+        UpgradeFireRate();
     }
 
     public void UpgradeDamage()
     {
-        rifleDamage += damageUpgradeAmt;
-        shotgunDamage += damageUpgradeAmt;
-        pistolDamage += damageUpgradeAmt;
+        rifleDamage += rifleDamageUpgradeAmt;
+        shotgunDamage += shotgunDamageUpgradeAmt;
+        pistolDamage += pistolDamageUpgradeAmt;
 
     }
 
     public void UpgradeFireRate()
     {
-        fireRate += fireRateUpgrade;
-    }
-
-    public void UpgradeBulletSize()
-    {
-        bulletSize += bulletSizeUpgrade;
+        rifleFireRate += rifleFireRateUpgrade;
+        shotgunFireRate += shotgunFireRateUpgrade;
+        pistolFireRate += pistolFireRateUpgrade;
     }
 
     public virtual void Die()
