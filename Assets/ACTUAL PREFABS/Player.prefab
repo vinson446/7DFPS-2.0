@@ -4958,7 +4958,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5434875313344559765
 Transform:
   m_ObjectHideFlags: 0
@@ -15792,17 +15792,23 @@ MonoBehaviour:
   maximumExp: 50
   currentHP: 100
   maximumHP: 100
-  rifleDamage: 100
+  rifleDamage: 2
   shotgunDamage: 3
-  pistolDamage: 100
-  fireRate: 10
+  pistolDamage: 1
+  rifleFireRate: 7
+  shotgunFireRate: 3
+  pistolFireRate: 5
   bulletSize: 0.025
   cantTakeDamage: 0
   cantTakeDamageDuration: 2
   hpIncrementAmt: 25
   expIncrementAmt: 50
-  damageUpgradeAmt: 3
-  fireRateUpgrade: 0.25
+  rifleDamageUpgradeAmt: 2
+  shotgunDamageUpgradeAmt: 2
+  pistolDamageUpgradeAmt: 2
+  rifleFireRateUpgrade: 2
+  shotgunFireRateUpgrade: 2
+  pistolFireRateUpgrade: 2
   bulletSizeUpgrade: 0.25
   TakeDamageEvent:
     m_PersistentCalls:
@@ -15844,20 +15850,21 @@ MonoBehaviour:
   - {fileID: 2580998621990506390}
   pistolBulletSpawn: {fileID: 2580998621322777374}
   currentRifleAmmo: 0
-  rifleReloadAmt: 30
-  maxRifleAmmo: 90
+  rifleReloadAmt: 90
+  maxRifleAmmo: 360
   currentShotgunAmmo: 0
-  shotgunReloadAmt: 5
-  maxShotgunAmmo: 30
+  shotgunReloadAmt: 30
+  maxShotgunAmmo: 90
   currentPistolAmmo: 0
-  pistolReloadAmt: 100
+  pistolReloadAmt: 60
   riflePickupAmt: 0
   shotgunPickupAmt: 0
   pistolPickupAmt: 0
   muzzleFlashFX:
-  - {fileID: 2580998620965540696}
   - {fileID: 7300657839455434181}
   - {fileID: 127061815765752853}
+  - {fileID: 2580998620965540696}
+  currentWeapon: 0
 --- !u!114 &8281571542547314929
 MonoBehaviour:
   m_ObjectHideFlags: 0
