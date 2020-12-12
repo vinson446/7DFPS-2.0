@@ -6,7 +6,10 @@ public abstract class Enemy : MonoBehaviour
 {
     [Header("HP Settings")]
     [SerializeField] int currentHP;
+    public int CurrentHP => currentHP;
+
     [SerializeField] int maximumHP;
+    public int MaximumHP => maximumHP;
 
     [Header("Combat Settings")]
     [SerializeField] int level;
@@ -27,9 +30,13 @@ public abstract class Enemy : MonoBehaviour
     [Header("Debug")]
     [SerializeField] string currentState;
 
+    EnemyUI enemyUI;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        enemyUI = GetComponentInChildren<EnemyUI>();
+
         currentHP = maximumHP;
     }
 
@@ -41,6 +48,8 @@ public abstract class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHP -= damage;
+
+        enemyUI.UpdateHP();
 
         if (currentHP <= 0)
         {

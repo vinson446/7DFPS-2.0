@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] int numEnemiesKilledThisRound;
     [SerializeField] int numEnemiesKilledTotal;
+    [SerializeField] bool isStartingNewRound;
 
     [Header("Spawn Settings")]
     [SerializeField] int currentNumEnemiesSpawned;
@@ -88,10 +89,11 @@ public class GameManager : MonoBehaviour
         numEnemiesKilledThisRound += 1;
         numEnemiesKilledTotal += 1;
 
-        if (numEnemiesKilledThisRound >= totalNumEnemiesToSpawn)
+        if (numEnemiesKilledThisRound >= totalNumEnemiesToSpawn && !isStartingNewRound)
         {
             numEnemiesKilledThisRound = 0;
             uiGameManager.StartNewRoundCoroutine();
+            isStartingNewRound = true;
         }
     }
 
@@ -99,7 +101,7 @@ public class GameManager : MonoBehaviour
     {
         while (currentNumEnemiesSpawned < totalNumEnemiesToSpawn)
         {
-            for (int i = 0; i < totalNumEnemiesToSpawn / Random.Range(4, 9); i++)
+            for (int i = 0; i < totalNumEnemiesToSpawn / Random.Range(3, 6); i++)
             {
                 if (currentNumEnemiesSpawned < totalNumEnemiesToSpawn)
                 {
@@ -109,7 +111,7 @@ public class GameManager : MonoBehaviour
                     GameObject enemy = Instantiate(e, spawnSettings[Random.Range(0, spawnSettings.Length)].position, Quaternion.identity);
 
                     // melee / boss
-                    if (spawnedEnemyIndex == 0 || spawnedEnemyIndex == 1 || spawnedEnemyIndex == 5)
+                    if (spawnedEnemyIndex == 0 || spawnedEnemyIndex == 1 || spawnedEnemyIndex == 4)
                     {
                         MeleeEnemy mEnemy = enemy.GetComponent<MeleeEnemy>();
                         mEnemy.LevelUp(currentRound);
@@ -127,7 +129,11 @@ public class GameManager : MonoBehaviour
                 }
             }
 
+            print(currentNumEnemiesSpawned);
+
             yield return new WaitForSeconds(timeBetweenWaves);
         }
+
+        isStartingNewRound = false;
     }
 }

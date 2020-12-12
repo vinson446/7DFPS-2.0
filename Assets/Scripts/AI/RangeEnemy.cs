@@ -108,15 +108,24 @@ public class RangeEnemy : Enemy
         GameManager gameManager = FindObjectOfType<GameManager>();
         gameManager.IncreaseScore(Exp);
         gameManager.UpdateEnemyKilled();
+
+        /*
+        EnemyUI enemyUI = gameObject.transform.parent.GetComponentInChildren<EnemyUI>();
+        enemyUI.UpdateHP();
+        */
     }
 
     public override void LevelUp(int round)
     {
-        for (int i = 0; i < round; i++)
+        for (int i = 0; i < round - 1; i++)
         {
+            Level += 1;
             Damage += 1;
             AtkSpeed += 0.1f;
         }
+
+        EnemyUI enemyUI = GetComponentInChildren<EnemyUI>();
+        enemyUI.UpdateLevel();
     }
 
     void LookAtPlayer()
