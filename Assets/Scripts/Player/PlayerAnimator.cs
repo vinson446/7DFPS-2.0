@@ -5,10 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class PlayerAnimator : MonoBehaviour
 {
-    const string IdleState = "Idle";
-    const string WalkState = "Walk";
-    const string RunState = "Run";
-    const string FireState = "Fire";
+    const string IdleState = "Idle_Rifle";
+    const string WalkState = "Walk_Rifle";
+    const string RunState = "Run_Rifle";
+    const string FireState = "Fire_Rifle";
 
     GunManager gunManager;
     Movement_CC movement;
