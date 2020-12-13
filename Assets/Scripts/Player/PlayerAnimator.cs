@@ -10,14 +10,15 @@ public class PlayerAnimator : MonoBehaviour
     const string RunState = "Run";
     const string FireState = "Fire";
 
-    [SerializeField] GunManager gunManager = null;
-    [SerializeField] Movement_CC movement = null;
-
+    GunManager gunManager;
+    Movement_CC movement;
 
     Animator _animator = null;
 
     private void Awake()
     {
+        gunManager = GetComponent<GunManager>();
+        movement = GetComponent<Movement_CC>();
         _animator = GetComponent<Animator>();
     }
 

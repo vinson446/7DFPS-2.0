@@ -219,7 +219,6 @@ public class MeleeEnemy : Enemy
             ResetAnimBools();
 
             OnDeath.Invoke();
-            isDead = true;
         }
     }
 

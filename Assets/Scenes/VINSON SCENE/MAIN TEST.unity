@@ -87491,6 +87491,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 90170459}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2011630865 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8281571542547314929, guid: e12a9bbe7c80727468cf89bee5f8dd2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2580998620316482583}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8377e6fbf0127040b93273c31c4c249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2011631591 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1764593216021398035, guid: 4680c3066f94e6c45b9a4b7df671ef56,
@@ -94102,6 +94114,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3267081197647827131, guid: e12a9bbe7c80727468cf89bee5f8dd2b,
+        type: 3}
+      propertyPath: movement
+      value: 
+      objectReference: {fileID: 2011630865}
     - target: {fileID: 3948868507590311443, guid: e12a9bbe7c80727468cf89bee5f8dd2b,
         type: 3}
       propertyPath: m_IsActive

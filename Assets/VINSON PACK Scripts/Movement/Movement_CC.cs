@@ -40,6 +40,7 @@ public class Movement_CC : Movement
     [SerializeField] bool isGrounded;
 
     CharacterController characterController;
+    Vector3 move;
     Vector3 velocity;
 
     // Start is called before the first frame update
@@ -56,9 +57,6 @@ public class Movement_CC : Movement
         else
             MovementRaw();
 
-        OnStartWalking();
-        OnStartRunning();
-        OnStartIdle();
         /*
         if (thirdPerson)
             RotateWithMovement();
@@ -85,7 +83,8 @@ public class Movement_CC : Movement
         if (Input.GetKeyDown(KeyCode.LeftShift) && velocity.x != 0 || velocity.z != 0)
         {
             isRunning = true;
-        }else if(velocity.x != 0 || velocity.z != 0)
+        }
+        else if (velocity.x != 0 || velocity.z != 0)
         {
             isWalking = true;
         }
@@ -108,60 +107,68 @@ public class Movement_CC : Movement
         float x = Input.GetAxisRaw("Horizontal");
         float z = Input.GetAxisRaw("Vertical");
 
-        Vector3 move = transform.right * x + transform.forward * z;
+        move = transform.right * x + transform.forward * z;
 
         if (Input.GetKey(KeyCode.LeftShift))
         { 
             characterController.Move(move * sprintSpeed * Time.deltaTime);
         }
-        else { 
+        else 
+        { 
             characterController.Move(move * moveSpeed * Time.deltaTime);
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && velocity.x != 0 || velocity.z != 0)
+        if (Input.GetKey(KeyCode.LeftShift) && (move.x != 0 || move.z != 0))
         {
-            isRunning = true;
+            OnStartRunning();
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift) && velocity.x != 0 || velocity.z != 0)
+        else if (move.x != 0 || move.z != 0)
         {
-            isWalking = true;
+            OnStartWalking();
         }
 
-        if (velocity.x == 0 && velocity.z == 0)
+        if (move.x == 0 && move.z == 0)
         {
-            isIdle = true;
+            OnStartIdle();
         }
+
         Jump();
     }
 
     private void OnStartWalking()
     {
-        if(isWalking == true)
+        if(!isWalking)
         {
             OnWalk?.Invoke();
+            isWalking = true;
+
+            isIdle = false;
+            isRunning = false;
         }
-        isIdle = false;
-        isRunning = false;
     }
 
     private void OnStartRunning()
     {
-        if(isRunning == true)
+        if(!isRunning)
         {
             OnRun?.Invoke();
+            isRunning = true;
+
+            isWalking = false;
+            isIdle = false;
         }
-        isWalking = false;
-        isIdle = false;
     }
 
     private void OnStartIdle()
     {
-        if(isIdle == true)
+        if(!isIdle)
         {
             OnIdle?.Invoke();
+            isIdle = true;
+
+            isWalking = false;
+            isRunning = false;
         }
-        isWalking = false;
-        isRunning = false;
     }
 
     void Jump()
