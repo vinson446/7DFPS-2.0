@@ -21464,6 +21464,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 48509565569188323, guid: 88f9ac196a3445f499ee54b335faed2b,
+        type: 3}
+      propertyPath: m_Name
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 372731924607461030, guid: 88f9ac196a3445f499ee54b335faed2b,
+        type: 3}
+      propertyPath: m_Name
+      value: Restart
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790354466826765759, guid: 88f9ac196a3445f499ee54b335faed2b,
+        type: 3}
+      propertyPath: m_Name
+      value: Exit
+      objectReference: {fileID: 0}
     - target: {fileID: 8183501399321877339, guid: 88f9ac196a3445f499ee54b335faed2b,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -21593,6 +21608,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8268898789714945786, guid: 88f9ac196a3445f499ee54b335faed2b,
+        type: 3}
+      propertyPath: m_Name
+      value: GameOver
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88f9ac196a3445f499ee54b335faed2b, type: 3}
