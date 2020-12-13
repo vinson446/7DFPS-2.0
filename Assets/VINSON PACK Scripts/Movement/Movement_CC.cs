@@ -1,10 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [RequireComponent(typeof(CharacterController))]
 public class Movement_CC : Movement
 {
+    public event Action OnWalk = delegate { };
+    public event Action OnRun = delegate { };
+    public event Action OnIdle = delegate { };
+
+    bool isIdle = true;
+    bool isWalking = false;
+    bool isRunning = false;
+
     [Header("Movement Settings")]
     [SerializeField] bool rawMovement;
     [SerializeField] float moveSpeed = 5;
@@ -47,6 +56,9 @@ public class Movement_CC : Movement
         else
             MovementRaw();
 
+        OnStartWalking();
+        OnStartRunning();
+        OnStartIdle();
         /*
         if (thirdPerson)
             RotateWithMovement();
@@ -62,10 +74,26 @@ public class Movement_CC : Movement
 
         input = GetMovementInput();
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift)) 
+        { 
             characterController.Move(input * sprintSpeed * Time.deltaTime);
-        else
+        }
+        else { 
             characterController.Move(input * moveSpeed * Time.deltaTime);
+            }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && velocity.x != 0 || velocity.z != 0)
+        {
+            isRunning = true;
+        }else if(velocity.x != 0 || velocity.z != 0)
+        {
+            isWalking = true;
+        }
+
+        if(Input.GetKeyUp(KeyCode.LeftShift) && velocity.x == 0 && velocity.z == 0)
+        {
+            isIdle = true;
+        }
 
         Jump();
     }
@@ -83,11 +111,57 @@ public class Movement_CC : Movement
         Vector3 move = transform.right * x + transform.forward * z;
 
         if (Input.GetKey(KeyCode.LeftShift))
+        { 
             characterController.Move(move * sprintSpeed * Time.deltaTime);
-        else
+        }
+        else { 
             characterController.Move(move * moveSpeed * Time.deltaTime);
+        }
 
+        if (Input.GetKeyDown(KeyCode.LeftShift) && velocity.x != 0 || velocity.z != 0)
+        {
+            isRunning = true;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift) && velocity.x != 0 || velocity.z != 0)
+        {
+            isWalking = true;
+        }
+
+        if (velocity.x == 0 && velocity.z == 0)
+        {
+            isIdle = true;
+        }
         Jump();
+    }
+
+    private void OnStartWalking()
+    {
+        if(isWalking == true)
+        {
+            OnWalk?.Invoke();
+        }
+        isIdle = false;
+        isRunning = false;
+    }
+
+    private void OnStartRunning()
+    {
+        if(isRunning == true)
+        {
+            OnRun?.Invoke();
+        }
+        isWalking = false;
+        isIdle = false;
+    }
+
+    private void OnStartIdle()
+    {
+        if(isIdle == true)
+        {
+            OnIdle?.Invoke();
+        }
+        isWalking = false;
+        isRunning = false;
     }
 
     void Jump()

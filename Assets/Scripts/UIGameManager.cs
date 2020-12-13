@@ -43,7 +43,7 @@ public class UIGameManager : MonoBehaviour
 
     // references
     Player player;
-    GameManager gameManager;
+    [SerializeField] GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()

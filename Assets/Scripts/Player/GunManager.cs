@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GunManager : MonoBehaviour
 {
+    public event Action OnFire = delegate { };
+    public event Action OnIdle = delegate { };
+
     [Header("Weapon GameObjs")]
     [SerializeField] GameObject[] weaponObjs;
     [SerializeField] GameObject[] ammoObjs;
@@ -81,11 +85,13 @@ public class GunManager : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse0) && Time.time >= shootCD && !isReloading)
         {
+            CheckIfStartFiring();
             shootCD = Time.time + 1 / fireRate;
             Shoot();
         }
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
+            CheckIfStoppedFiring();
             ShowMuzzleFlash(false);
         }
 
@@ -173,6 +179,24 @@ public class GunManager : MonoBehaviour
             }
 
             UseBulletOnBackend();
+        }
+    }
+
+    private void CheckIfStartFiring()
+    {
+        if (Input.GetKey(KeyCode.Mouse0) && Time.time >= shootCD && !isReloading)
+        {
+            OnFire?.Invoke();
+        }
+
+
+    }
+
+    private void CheckIfStoppedFiring()
+    {
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            OnIdle?.Invoke();
         }
     }
 
