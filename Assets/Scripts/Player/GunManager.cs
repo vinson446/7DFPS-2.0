@@ -43,6 +43,9 @@ public class GunManager : MonoBehaviour
     [SerializeField] int currentWeapon;
     float shootCD;
 
+    public float offsetX;
+    public float offsetY;
+
     // references
     Player player;
     UIGameManager uiGameManager;
@@ -130,9 +133,10 @@ public class GunManager : MonoBehaviour
         }
         else
         {
-            float x = Screen.width / 2;
-            float y = Screen.height / 2;
-            var ray = Camera.main.ScreenPointToRay(new Vector3(x, y, 0));
+            // float x = Screen.width / 2;
+            //float y = Screen.height / 2;
+            // var ray = Camera.main.ScreenPointToRay(new Vector3(x, y, 0));
+            Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
 
             switch (currentWeapon)
             {
