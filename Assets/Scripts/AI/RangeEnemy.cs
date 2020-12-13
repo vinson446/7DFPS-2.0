@@ -71,7 +71,7 @@ public class RangeEnemy : Enemy
     {
         do
         {
-            transform.position = initPos;
+            // transform.position = initPos;
 
             // FixRotation();
 

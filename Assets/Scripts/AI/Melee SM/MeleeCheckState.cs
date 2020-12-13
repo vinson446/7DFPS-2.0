@@ -39,7 +39,7 @@ public class MeleeCheckState : MeleeState
     void CheckAction()
     {
         // attack if player is within range
-        if (Vector3.Distance(transform.position, target.position) <= stateMachine.MEnemy.AtkRange)
+        if (Vector3.Distance(transform.position, target.position) <= stateMachine.MEnemy.AtkRange + 0.25f)
         {
             stateMachine.NavAgent.enabled = false;
             stateMachine.ChangeState<MeleeAttackState>();

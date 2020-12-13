@@ -2697,7 +2697,7 @@ MonoBehaviour:
   exp: 59
   damage: 5
   atkSpeed: 1
-  atkRange: 0.5
+  atkRange: 0.75
   currentState: 
   weapon: Fist
   axeHitBox: {fileID: 5156766137791534447}
@@ -2752,7 +2752,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8037852846246812530}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.25060165
   m_Height: 0.9427351

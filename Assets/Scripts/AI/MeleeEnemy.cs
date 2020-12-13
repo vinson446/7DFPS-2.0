@@ -112,7 +112,7 @@ public class MeleeEnemy : Enemy
 
             ResetAnimBools();
 
-        } while (Vector3.Distance(transform.position, stateMachine.PlayerTrans.position) <= AtkRange && !isDead);
+        } while (Vector3.Distance(transform.position, stateMachine.PlayerTrans.position) <= AtkRange + 0.25f && !isDead);
 
         if (!isDead)
             stateMachine.ChangeState<MeleeCheckState>();

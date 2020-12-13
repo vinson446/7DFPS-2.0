@@ -109,7 +109,7 @@ NavMeshSettings:
     agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
-    agentClimb: 0.4
+    agentClimb: 1
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -7870,7 +7870,7 @@ PrefabInstance:
     - target: {fileID: 3580735997117666121, guid: f3ef215e4496c3f4ea82a918a73b3cfc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.01
+      value: 14.95
       objectReference: {fileID: 0}
     - target: {fileID: 3580735997117666121, guid: f3ef215e4496c3f4ea82a918a73b3cfc,
         type: 3}
@@ -8860,6 +8860,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336641443381721491, guid: 4680c3066f94e6c45b9a4b7df671ef56,
+        type: 3}
+      propertyPath: m_Convex
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3275786685760277507, guid: 4680c3066f94e6c45b9a4b7df671ef56,
         type: 3}
@@ -12087,11 +12092,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentRound: 0
   currentScore: 0
-  numEnemiesKilledThisRound: 0
+  numEnemiesKilledThisRound: 25
   numEnemiesKilledTotal: 0
   isStartingNewRound: 0
   currentNumEnemiesSpawned: 0
-  totalNumEnemiesToSpawn: 1000
+  totalNumEnemiesToSpawn: 100
   timeBetweenSpawn1: 0
   timeBetweenSpawn2: 0
   timeBetweenWaves: 0
@@ -48281,7 +48286,7 @@ PrefabInstance:
     - target: {fileID: 6719812800512658670, guid: 0a92cafb6bde9d14ca87de7fa656686a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -28.99
+      value: -30.36
       objectReference: {fileID: 0}
     - target: {fileID: 6719812800512658670, guid: 0a92cafb6bde9d14ca87de7fa656686a,
         type: 3}
@@ -66392,7 +66397,7 @@ PrefabInstance:
     - target: {fileID: 1764593216021398035, guid: 4680c3066f94e6c45b9a4b7df671ef56,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.04
+      value: 14.96
       objectReference: {fileID: 0}
     - target: {fileID: 1764593216021398035, guid: 4680c3066f94e6c45b9a4b7df671ef56,
         type: 3}
@@ -66402,7 +66407,7 @@ PrefabInstance:
     - target: {fileID: 1764593216021398035, guid: 4680c3066f94e6c45b9a4b7df671ef56,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -25.3
+      value: -26.28
       objectReference: {fileID: 0}
     - target: {fileID: 1764593216021398035, guid: 4680c3066f94e6c45b9a4b7df671ef56,
         type: 3}
@@ -66447,12 +66452,12 @@ PrefabInstance:
     - target: {fileID: 1764593216021398035, guid: 4680c3066f94e6c45b9a4b7df671ef56,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.005
+      value: 0.006
       objectReference: {fileID: 0}
     - target: {fileID: 1764593216021398035, guid: 4680c3066f94e6c45b9a4b7df671ef56,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.005
+      value: 0.006
       objectReference: {fileID: 0}
     - target: {fileID: 2336641443381721491, guid: 4680c3066f94e6c45b9a4b7df671ef56,
         type: 3}
@@ -66919,7 +66924,7 @@ PrefabInstance:
     - target: {fileID: 6719812800512658670, guid: 0a92cafb6bde9d14ca87de7fa656686a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -25.11
+      value: -26.22
       objectReference: {fileID: 0}
     - target: {fileID: 6719812800512658670, guid: 0a92cafb6bde9d14ca87de7fa656686a,
         type: 3}
@@ -93925,7 +93930,7 @@ PrefabInstance:
     - target: {fileID: 1764593216021398035, guid: 4680c3066f94e6c45b9a4b7df671ef56,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -21.49
+      value: -22.07
       objectReference: {fileID: 0}
     - target: {fileID: 1764593216021398035, guid: 4680c3066f94e6c45b9a4b7df671ef56,
         type: 3}
@@ -93975,7 +93980,7 @@ PrefabInstance:
     - target: {fileID: 1764593216021398035, guid: 4680c3066f94e6c45b9a4b7df671ef56,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.005
+      value: 0.006
       objectReference: {fileID: 0}
     - target: {fileID: 2336641443381721491, guid: 4680c3066f94e6c45b9a4b7df671ef56,
         type: 3}

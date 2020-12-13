@@ -3033,7 +3033,7 @@ MonoBehaviour:
   exp: 25
   damage: 5
   atkSpeed: 1
-  atkRange: 0.5
+  atkRange: 0.75
   currentState: 
   weapon: Axe
   axeHitBox: {fileID: 6532468743766136794}
@@ -3088,7 +3088,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8057884569367690275}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.25060165
   m_Height: 0.9427351

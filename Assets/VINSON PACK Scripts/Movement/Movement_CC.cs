@@ -99,9 +99,12 @@ public class Movement_CC : Movement
 
         // gravity
         // velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        var vSpeed = 0f;
-        vSpeed -= gravity * Time.deltaTime;
-        velocity.y -= vSpeed;
+        if (!isGrounded)
+        {
+            var vSpeed = 0f;
+            vSpeed -= gravity * Time.deltaTime;
+            velocity.y -= vSpeed;
+        }
 
         // short jump
         /*
