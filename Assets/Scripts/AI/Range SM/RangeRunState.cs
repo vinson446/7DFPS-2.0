@@ -33,7 +33,7 @@ public class RangeRunState : RangeState
     {
         // print("Distance from closest coer: " + Vector3.Distance(transform.position, coverSpots[currentCoverIndex].transform.position));
 
-        if (Vector3.Distance(transform.position, coverSpots[currentCoverIndex].transform.position) <= 5 && hasRunAway)
+        if (Vector3.Distance(transform.position, coverSpots[currentCoverIndex].transform.position) <= 1 && hasRunAway)
         {
             stateMachine.NavAgent.enabled = false;
 

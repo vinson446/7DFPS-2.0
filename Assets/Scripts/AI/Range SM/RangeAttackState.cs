@@ -8,6 +8,8 @@ public class RangeAttackState : RangeState
     {
         stateMachine.REnemy.ChangeState("Range Attack State");
 
+        stateMachine.REnemy.initPos = transform.position;
+
         stateMachine.REnemy.Attack();
     }
 }

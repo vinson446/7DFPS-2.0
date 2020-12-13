@@ -40,7 +40,14 @@ public class EnemyUI : MonoBehaviour
 
     public void UpdateLevel()
     {
-        leelText.text = enemy.Level.ToString();
+        MeleeEnemy mEnemy = GetComponentInParent<MeleeEnemy>();
+        RangeEnemy rEnemy = GetComponentInParent<RangeEnemy>();
+
+        if (mEnemy != null)
+            leelText.text = mEnemy.Level.ToString();
+        else if (rEnemy != null)
+            leelText.text = rEnemy.Level.ToString();
+
         TurnOnOffUI(false);
     }
 

@@ -21,6 +21,9 @@ public class RangeEnemy : Enemy
     [SerializeField] float rotSpeed;
     public float RotSpeed => rotSpeed;
 
+    public float rifleRotationOffset;
+    public float pistolRotationOffset;
+
     // state Machine
     [Header("State Machine")]
     [SerializeField] bool isIdle;
@@ -33,7 +36,7 @@ public class RangeEnemy : Enemy
     public event Action OnAttack = delegate { };
     public event Action OnDeath = delegate { };
 
-    Vector3 initPos;
+    public Vector3 initPos;
 
     RangeSM stateMachine;
     RangeRunState rangeRunState;
@@ -61,8 +64,6 @@ public class RangeEnemy : Enemy
 
     public override void Attack()
     {
-        initPos = transform.position;
-
         StartCoroutine(AttackCoroutine());
     }
 
@@ -130,14 +131,25 @@ public class RangeEnemy : Enemy
     {
         Vector3 lookAt = new Vector3(stateMachine.PlayerTrans.position.x, transform.position.y, stateMachine.PlayerTrans.position.z);
         transform.LookAt(lookAt);
-        transform.rotation *= Quaternion.Euler(0, 45, 0);
+
+        if (weapon == "Pistol")
+        {
+            transform.rotation *= Quaternion.Euler(0, pistolRotationOffset, 0);
+        }
+        else if (weapon == "Rifle")
+        {
+            transform.rotation *= Quaternion.Euler(0, rifleRotationOffset, 0);
+        }
 
         /*
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(stateMachine.PlayerTrans.position.x, 0, 
             stateMachine.PlayerTrans.position.z)), Time.deltaTime * rotSpeed);
 
         // to fix attack animation
-        // transform.Rotate(0, 45, 0);
+        if (weapon == "Pistol")
+            transform.Rotate(0, 45, 0);
+        else if (weapon == "Rifle")
+            transform.Rotate(0, 60, 0);
         */
     }
 
