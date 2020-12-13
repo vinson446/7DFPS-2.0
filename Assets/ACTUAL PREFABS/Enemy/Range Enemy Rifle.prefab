@@ -573,6 +573,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd9c1598c6e79c4b82e215d526ca267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exp: 20
+  chanceToDropPickup: 10
+  pickupObjs:
+  - {fileID: 6530860579511666106, guid: 269bf55874773804fb0bf8ae18931ca6, type: 3}
+  - {fileID: 8913173393656932825, guid: ea2fe3611c7a0014582daf8998bfd39d, type: 3}
 --- !u!1 &1147410703923309752
 GameObject:
   m_ObjectHideFlags: 0
@@ -1225,15 +1230,9 @@ MonoBehaviour:
   currentHP: 20
   maximumHP: 20
   level: 1
-  exp: 20
   damage: 1
   atkSpeed: 1
   atkRange: 25
-  chanceToDropPickup: 100
-  pickupObjs:
-  - {fileID: 6530860579511666106, guid: 269bf55874773804fb0bf8ae18931ca6, type: 3}
-  - {fileID: 8913173393656932825, guid: ea2fe3611c7a0014582daf8998bfd39d, type: 3}
-  fadeColor: {r: 0, g: 0, b: 0, a: 0}
   currentState: 
   weapon: Rifle
   fireRate: 1
@@ -1246,7 +1245,6 @@ MonoBehaviour:
   isIdle: 0
   isRunning: 0
   isAttacking: 0
-  isDead: 0
   initPos: {x: 0, y: 0, z: 0}
 --- !u!195 &1839647400642190130
 NavMeshAgent:

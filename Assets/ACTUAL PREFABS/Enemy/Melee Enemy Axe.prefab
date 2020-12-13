@@ -2219,6 +2219,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acedd0c959f1bdf4ba962bbd0b0a23df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exp: 25
+  chanceToDropPickup: 10
+  pickupObjs:
+  - {fileID: 6530860579511666106, guid: 269bf55874773804fb0bf8ae18931ca6, type: 3}
+  - {fileID: 8913173393656932825, guid: ea2fe3611c7a0014582daf8998bfd39d, type: 3}
 --- !u!1 &6532468743766136797
 GameObject:
   m_ObjectHideFlags: 0
@@ -3030,15 +3035,9 @@ MonoBehaviour:
   currentHP: 25
   maximumHP: 25
   level: 1
-  exp: 25
   damage: 5
   atkSpeed: 1
   atkRange: 0.75
-  chanceToDropPickup: 100
-  pickupObjs:
-  - {fileID: 6530860579511666106, guid: 269bf55874773804fb0bf8ae18931ca6, type: 3}
-  - {fileID: 8913173393656932825, guid: ea2fe3611c7a0014582daf8998bfd39d, type: 3}
-  fadeColor: {r: 0, g: 0, b: 0, a: 0}
   currentState: 
   weapon: Axe
   axeHitBox: {fileID: 6532468743766136794}
@@ -3050,7 +3049,6 @@ MonoBehaviour:
   isWalking: 0
   isRunning: 0
   isAttacking: 0
-  isDead: 0
 --- !u!114 &8057884569367690286
 MonoBehaviour:
   m_ObjectHideFlags: 0

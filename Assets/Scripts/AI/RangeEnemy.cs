@@ -29,7 +29,6 @@ public class RangeEnemy : Enemy
     [SerializeField] bool isIdle;
     [SerializeField] bool isRunning;
     [SerializeField] bool isAttacking;
-    [SerializeField] bool isDead;
 
     public event Action OnIdle = delegate { };
     public event Action OnRun = delegate { };
@@ -104,38 +103,6 @@ public class RangeEnemy : Enemy
     public override void Die()
     {
         stateMachine.ChangeState<RangeDeathState>();
-        stateMachine.PlayerTrans.GetComponent<Player>().GainExp(Exp);
-
-        GameManager gameManager = FindObjectOfType<GameManager>();
-        gameManager.IncreaseScore(Exp);
-        gameManager.UpdateEnemyKilled();
-
-        EnemyUI enemyUI = stateMachine.gameObject.transform.parent.GetComponentInChildren<EnemyUI>();
-        enemyUI.TurnOnOffUI(false);
-
-        int dropPickupChance = UnityEngine.Random.Range(0, 101);
-        if (dropPickupChance <= chanceToDropPickup)
-        {
-            DropPickup();
-        }
-
-        gameObject.AddComponent<Rigidbody>();
-
-        Destroy(gameObject, 5);
-    }
-
-    void DropPickup()
-    {
-        int pickup = UnityEngine.Random.Range(0, 2);
-
-        if (pickup == 0)
-        {
-            Instantiate(pickupObjs[0], transform.position, transform.rotation);
-        }
-        else if (pickup == 1)
-        {
-            Instantiate(pickupObjs[1], transform.position, transform.rotation);
-        }
     }
 
     public override void LevelUp(int round)

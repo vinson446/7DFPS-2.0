@@ -473,6 +473,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acedd0c959f1bdf4ba962bbd0b0a23df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exp: 50
+  chanceToDropPickup: 10
+  pickupObjs:
+  - {fileID: 6530860579511666106, guid: 269bf55874773804fb0bf8ae18931ca6, type: 3}
+  - {fileID: 8913173393656932825, guid: ea2fe3611c7a0014582daf8998bfd39d, type: 3}
 --- !u!1 &1186879872706480513
 GameObject:
   m_ObjectHideFlags: 0
@@ -2694,15 +2699,9 @@ MonoBehaviour:
   currentHP: 50
   maximumHP: 50
   level: 1
-  exp: 59
   damage: 5
   atkSpeed: 1
   atkRange: 0.75
-  chanceToDropPickup: 100
-  pickupObjs:
-  - {fileID: 6530860579511666106, guid: 269bf55874773804fb0bf8ae18931ca6, type: 3}
-  - {fileID: 8913173393656932825, guid: ea2fe3611c7a0014582daf8998bfd39d, type: 3}
-  fadeColor: {r: 0, g: 0, b: 0, a: 0}
   currentState: 
   weapon: Fist
   axeHitBox: {fileID: 5156766137791534447}
@@ -2714,7 +2713,6 @@ MonoBehaviour:
   isWalking: 0
   isRunning: 0
   isAttacking: 0
-  isDead: 0
 --- !u!114 &6993037411534786346
 MonoBehaviour:
   m_ObjectHideFlags: 0

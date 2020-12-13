@@ -15,9 +15,6 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] int level;
     public int Level { get => level; set => level = value; }
 
-    [SerializeField] int exp;
-    public int Exp { get => exp; set => exp = value; }
-
     [SerializeField] int damage;
     public int Damage { get => damage; set => damage = value; }
 
@@ -27,16 +24,12 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] float atkRange;
     public float AtkRange => atkRange;
 
-    public int chanceToDropPickup;
-    public GameObject[] pickupObjs;
-    public Color fadeColor;
-
     [Header("Debug")]
     [SerializeField] string currentState;
 
     EnemyUI enemyUI;
 
-    bool isDead;
+    protected bool isDead;
 
     // Start is called before the first frame update
     void Awake()
@@ -59,7 +52,6 @@ public abstract class Enemy : MonoBehaviour
 
         if (currentHP <= 0 && !isDead)
         {
-            isDead = true;
             Die();
         }
     }
