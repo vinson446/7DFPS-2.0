@@ -15,7 +15,7 @@ public class Movement_CC : Movement
     [SerializeField] float jumpPower = 7;
     [SerializeField] float gravity = -9.81f;
     [SerializeField] float fallMultiplier = 2.5f;
-    [SerializeField] float lowJumpMultiplier = 2f;
+    // [SerializeField] float lowJumpMultiplier = 2f;
     Vector3 drag;
 
     /*
@@ -98,13 +98,18 @@ public class Movement_CC : Movement
         }
 
         // gravity
-        velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        // velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        var vSpeed = 0f;
+        vSpeed -= gravity * Time.deltaTime;
+        velocity.y -= vSpeed;
 
         // short jump
+        /*
         if (velocity.y > 0 && !Input.GetKey(KeyCode.Space))
         {
             velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
+        */
 
         characterController.Move(velocity * Time.deltaTime);
     }
