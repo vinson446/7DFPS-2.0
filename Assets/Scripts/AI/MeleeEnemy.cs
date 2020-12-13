@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using DG.Tweening;
 
 public class MeleeEnemy : Enemy
 {
@@ -112,7 +113,7 @@ public class MeleeEnemy : Enemy
 
             ResetAnimBools();
 
-        } while (Vector3.Distance(transform.position, stateMachine.PlayerTrans.position) <= AtkRange + 0.25f && !isDead);
+        } while (Vector3.Distance(transform.position, stateMachine.PlayerTrans.position) <= AtkRange && !isDead);
 
         if (!isDead)
             stateMachine.ChangeState<MeleeCheckState>();
@@ -129,6 +130,31 @@ public class MeleeEnemy : Enemy
 
         EnemyUI enemyUI = stateMachine.gameObject.transform.parent.GetComponentInChildren<EnemyUI>();
         enemyUI.TurnOnOffUI(false);
+
+        int dropPickupChance = UnityEngine.Random.Range(0, 101);
+        if (dropPickupChance <= chanceToDropPickup)
+        {
+            DropPickup();
+        }
+
+        stateMachine.NavAgent.enabled = false;
+        gameObject.AddComponent<Rigidbody>();
+
+        Destroy(gameObject, 5);
+    }
+
+    void DropPickup()
+    {
+        int pickup = UnityEngine.Random.Range(0, 2);
+
+        if (pickup == 0)
+        {
+            Instantiate(pickupObjs[0], transform.position, transform.rotation);
+        }
+        else if (pickup == 1)
+        {
+            Instantiate(pickupObjs[1], transform.position, transform.rotation);
+        }
     }
 
     public override void LevelUp(int round)

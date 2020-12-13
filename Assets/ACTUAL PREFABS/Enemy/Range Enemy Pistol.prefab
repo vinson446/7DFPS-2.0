@@ -1267,6 +1267,11 @@ MonoBehaviour:
   damage: 1
   atkSpeed: 1
   atkRange: 25
+  chanceToDropPickup: 100
+  pickupObjs:
+  - {fileID: 6530860579511666106, guid: 269bf55874773804fb0bf8ae18931ca6, type: 3}
+  - {fileID: 8913173393656932825, guid: ea2fe3611c7a0014582daf8998bfd39d, type: 3}
+  fadeColor: {r: 0, g: 0, b: 0, a: 0}
   currentState: 
   weapon: Pistol
   fireRate: 1

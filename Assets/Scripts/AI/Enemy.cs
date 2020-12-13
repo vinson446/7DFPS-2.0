@@ -27,6 +27,10 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] float atkRange;
     public float AtkRange => atkRange;
 
+    public int chanceToDropPickup;
+    public GameObject[] pickupObjs;
+    public Color fadeColor;
+
     [Header("Debug")]
     [SerializeField] string currentState;
 
@@ -55,8 +59,8 @@ public abstract class Enemy : MonoBehaviour
 
         if (currentHP <= 0 && !isDead)
         {
-            Die();
             isDead = true;
+            Die();
         }
     }
 
