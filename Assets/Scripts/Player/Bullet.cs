@@ -16,6 +16,8 @@ public class Bullet : MonoBehaviour
     AudioManager audioManager;
     public GameObject clip;
 
+    public GameObject damagePopup;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,9 @@ public class Bullet : MonoBehaviour
 
                 audioManager.SetAudioObj(clip);
                 audioManager.PlayOneShotRandomPitch(4);
+
+                // Instantiate(damagePopup, transform.position, Quaternion.identity);
+                // damagePopup.GetComponent<DamagePopup>().SetDamage(damage);
             }
 
             Destroy(gameObject);
@@ -55,6 +60,9 @@ public class Bullet : MonoBehaviour
 
                 audioManager.SetAudioObj(clip);
                 audioManager.PlayOneShotRandomPitch(4);
+
+                // Instantiate(damagePopup, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+                // damagePopup.GetComponent<DamagePopup>().SetDamage(damage);
             }
 
             Destroy(gameObject);
