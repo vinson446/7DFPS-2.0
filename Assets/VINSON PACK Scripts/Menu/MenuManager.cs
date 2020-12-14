@@ -8,6 +8,11 @@ public class MenuManager : MonoBehaviour
     [Header("Panels")]
     [SerializeField] GameObject[] menuPanels;
 
+    private void Start()
+    {
+        Cursor.visible = true;
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

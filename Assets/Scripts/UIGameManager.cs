@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class UIGameManager : MonoBehaviour
 {
@@ -43,11 +44,18 @@ public class UIGameManager : MonoBehaviour
 
     // references
     Player player;
-    [SerializeField] GameManager gameManager;
+    GameManager gameManager;
+
+    [Header("Death")]
+    public GameObject deathPanel;
+    public TextMeshProUGUI finalRoundText;
+    public TextMeshProUGUI finalScoreText;
 
     // Start is called before the first frame update
     void Start()
     {
+        deathPanel.SetActive(false);
+
         player = FindObjectOfType<Player>();
         gameManager = FindObjectOfType<GameManager>();
 
@@ -113,7 +121,25 @@ public class UIGameManager : MonoBehaviour
 
     public void ShowDeathScreen()
     {
+        Cursor.visible = true;
+        finalRoundText.text = roundText.text;
+        finalScoreText.text = scoreText.text;
+        deathPanel.SetActive(true);
+    }
 
+    public void Retry()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();   
     }
 
     public void ShowEnemyCount()

@@ -2700,7 +2700,7 @@ MonoBehaviour:
   currentHP: 50
   maximumHP: 50
   level: 1
-  damage: 5
+  damage: 25
   atkSpeed: 1
   atkRange: 0.75
   currentState: 

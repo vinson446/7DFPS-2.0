@@ -173,6 +173,6 @@ public class Player : MonoBehaviour
 
     public virtual void Die()
     {
-
+        uiGameManager.ShowDeathScreen();
     }
 }
