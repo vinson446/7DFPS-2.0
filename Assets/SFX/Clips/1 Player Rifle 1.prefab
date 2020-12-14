@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2547651465319365719}
   - component: {fileID: 2547651465319365718}
   m_Layer: 0
-  m_Name: Player Rifle 1
+  m_Name: 1 Player Rifle 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 376bc942775cdee43b79eab35dec60e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: 1
+  volume: 0.75
   pitch: 1
   existenceTime: 5
   randMinPitch: 0

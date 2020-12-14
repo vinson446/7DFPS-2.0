@@ -40,8 +40,12 @@ public class RangeEnemy : Enemy
     RangeSM stateMachine;
     RangeRunState rangeRunState;
 
+    AudioManager audioManager;
+    public GameObject clip;
+
     private void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         stateMachine = GetComponentInChildren<RangeSM>();
         rangeRunState = GetComponentInChildren<RangeRunState>();
     }
@@ -75,6 +79,18 @@ public class RangeEnemy : Enemy
             // FixRotation();
 
             OnAttackAnimation();
+
+            int rand = UnityEngine.Random.Range(0, 2);
+            if (rand == 0)
+            {
+                audioManager.SetAudioObj(clip);
+                audioManager.PlayOneShotRandomPitch(7);
+            }
+            else
+            {
+                audioManager.SetAudioObj(clip);
+                audioManager.PlayOneShotRandomPitch(8);
+            }
 
             GameObject bull = Instantiate(bullet, bulletSpawn.position, bulletSpawn.rotation);
 

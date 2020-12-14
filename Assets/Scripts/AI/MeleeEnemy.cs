@@ -36,8 +36,12 @@ public class MeleeEnemy : Enemy
 
     MeleeSM stateMachine;
 
+    AudioManager audioManager;
+    public GameObject clip;
+
     private void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         stateMachine = GetComponentInChildren<MeleeSM>();
     }
 
@@ -77,6 +81,13 @@ public class MeleeEnemy : Enemy
                         break;
                     }
                 }
+
+                int rand = UnityEngine.Random.Range(0, 2);
+                if (rand == 0)
+                {
+                    audioManager.SetAudioObj(clip);
+                    audioManager.PlayOneShotRandomPitch(9);
+                }
             }
             else if (weapon == "Knife")
             {
@@ -91,6 +102,13 @@ public class MeleeEnemy : Enemy
                         break;
                     }
                 }
+
+                int rand = UnityEngine.Random.Range(0, 2);
+                if (rand == 0)
+                {
+                    audioManager.SetAudioObj(clip);
+                    audioManager.PlayOneShotRandomPitch(9);
+                }
             }
             else if (weapon == "Fist")
             {
@@ -104,6 +122,13 @@ public class MeleeEnemy : Enemy
                         stateMachine.PlayerTrans.GetComponent<Player>().TakeDamage(Damage);
                         break;
                     }
+                }
+
+                int rand = UnityEngine.Random.Range(0, 2);
+                if (rand == 0)
+                {
+                    audioManager.SetAudioObj(clip);
+                    audioManager.PlayOneShotRandomPitch(10);
                 }
             }
 

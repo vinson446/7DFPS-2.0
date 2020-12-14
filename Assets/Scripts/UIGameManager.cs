@@ -54,8 +54,12 @@ public class UIGameManager : MonoBehaviour
     public TextMeshProUGUI finalRoundText;
     public TextMeshProUGUI finalScoreText;
 
+    AudioManager audioManager;
+    public GameObject clip;
+
     private void Awake()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         player = FindObjectOfType<Player>();
         gameManager = FindObjectOfType<GameManager>();
         gunManager = player.GetComponent<GunManager>();
@@ -235,9 +239,15 @@ public class UIGameManager : MonoBehaviour
         roundCompleteText1.text = "ROUND COMPLETE";
         roundCompleteText2.text = "Starting next Round in...";
 
+        audioManager.SetAudioObj(clip);
+        audioManager.PlayOneShotRandomPitch(15);
+
         for (int i = 3; i > 0; i--)
         {
             newRoundText.text = i.ToString();
+
+            audioManager.SetAudioObj(clip);
+            audioManager.PlayOneShotRandomPitch(17);
 
             yield return new WaitForSeconds(1);
 

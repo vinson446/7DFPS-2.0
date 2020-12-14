@@ -2226,6 +2226,7 @@ MonoBehaviour:
   pickupObjs:
   - {fileID: 6530860579511666106, guid: 269bf55874773804fb0bf8ae18931ca6, type: 3}
   - {fileID: 8913173393656932825, guid: ea2fe3611c7a0014582daf8998bfd39d, type: 3}
+  clip: {fileID: 7584518441845187744, guid: 494bc04da158fe44fa7259e67263ab1c, type: 3}
 --- !u!1 &6532468743766136797
 GameObject:
   m_ObjectHideFlags: 0
@@ -3051,6 +3052,7 @@ MonoBehaviour:
   isWalking: 0
   isRunning: 0
   isAttacking: 0
+  clip: {fileID: 7584518441845187744, guid: 494bc04da158fe44fa7259e67263ab1c, type: 3}
 --- !u!114 &8057884569367690286
 MonoBehaviour:
   m_ObjectHideFlags: 0

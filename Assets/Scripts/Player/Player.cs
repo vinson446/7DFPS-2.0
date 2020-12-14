@@ -70,6 +70,7 @@ public class Player : MonoBehaviour
     UIGameManager uiGameManager;
 
     AudioManager audioManager;
+    public GameObject clip;
 
     // Start is called before the first frame update
     void Start()
@@ -109,7 +110,8 @@ public class Player : MonoBehaviour
 
             StartCoroutine(CantTakeDamageCoroutine());
 
-            // audioManager.PlayOneShotRandomPitch(4);
+            audioManager.SetAudioObj(clip);
+            audioManager.PlayOneShotRandomPitch(6);
         }
     }
 
@@ -164,6 +166,9 @@ public class Player : MonoBehaviour
         UpgradeFireRate();
 
         uiGameManager.ShowStats();
+
+        audioManager.SetAudioObj(clip);
+        audioManager.PlayOneShotRandomPitch(16);
 
         StartCoroutine(LevelVFXCoroutine());
     }

@@ -580,6 +580,7 @@ MonoBehaviour:
   pickupObjs:
   - {fileID: 6530860579511666106, guid: 269bf55874773804fb0bf8ae18931ca6, type: 3}
   - {fileID: 8913173393656932825, guid: ea2fe3611c7a0014582daf8998bfd39d, type: 3}
+  clip: {fileID: 7584518441845187744, guid: 494bc04da158fe44fa7259e67263ab1c, type: 3}
 --- !u!1 &1147410703923309752
 GameObject:
   m_ObjectHideFlags: 0
@@ -1249,6 +1250,7 @@ MonoBehaviour:
   isRunning: 0
   isAttacking: 0
   initPos: {x: 0, y: 0, z: 0}
+  clip: {fileID: 7584518441845187744, guid: 494bc04da158fe44fa7259e67263ab1c, type: 3}
 --- !u!195 &1839647400642190130
 NavMeshAgent:
   m_ObjectHideFlags: 0

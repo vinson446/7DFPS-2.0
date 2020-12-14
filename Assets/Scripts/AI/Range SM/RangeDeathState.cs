@@ -13,6 +13,9 @@ public class RangeDeathState : RangeState
     public int chanceToDropPickup;
     public GameObject[] pickupObjs;
 
+    AudioManager audioManager;
+    public GameObject clip;
+
     public override void EnterState()
     {
         stateMachine.REnemy.ChangeState("Range Death State");
@@ -39,6 +42,10 @@ public class RangeDeathState : RangeState
         coll.enabled = false;
         // Rigidbody rb = gameObject.transform.parent.gameObject.AddComponent<Rigidbody>();
         // rb.velocity = Vector3.zero;
+
+        audioManager = FindObjectOfType<AudioManager>();
+        audioManager.SetAudioObj(clip);
+        audioManager.PlayOneShotRandomPitch(11);
 
         Destroy(gameObject.transform.parent.gameObject, 5);
     }

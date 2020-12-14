@@ -5068,3 +5068,4 @@ MonoBehaviour:
   healAmt: 25
   lifeTime: 15
   rotateTime: 15
+  clip: {fileID: 2382900608188982448, guid: b947e0d8b57c709409f1d24a6e2f066a, type: 3}

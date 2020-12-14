@@ -4851,6 +4851,7 @@ MonoBehaviour:
   rifleAmt: 30
   shotgunAmt: 15
   lifeTime: 15
+  clip: {fileID: 2382900608188982448, guid: b947e0d8b57c709409f1d24a6e2f066a, type: 3}
 --- !u!65 &250924686530384455
 BoxCollider:
   m_ObjectHideFlags: 0

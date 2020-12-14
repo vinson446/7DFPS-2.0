@@ -8,9 +8,14 @@ public class AmmoPickup : MonoBehaviour
     public int shotgunAmt;
     public float lifeTime;
 
+    AudioManager audioManager;
+    public GameObject clip;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
+
         Destroy(gameObject, lifeTime);
     }
 
@@ -28,6 +33,9 @@ public class AmmoPickup : MonoBehaviour
             player.GainAmmoOnBackend(rifleAmt, shotgunAmt);
 
             Destroy(gameObject);
+
+            audioManager.SetAudioObj(clip);
+            audioManager.PlayOneShotRandomPitch(13);
         }
     }
 }

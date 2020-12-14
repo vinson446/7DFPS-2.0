@@ -60,9 +60,13 @@ public class GunManager : MonoBehaviour
     Player player;
     UIGameManager uiGameManager;
 
+    AudioManager audioManager;
+    public GameObject clip;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         player = FindObjectOfType<Player>();
         uiGameManager = FindObjectOfType<UIGameManager>();
 
@@ -162,6 +166,9 @@ public class GunManager : MonoBehaviour
 
                     Rigidbody rb1 = bullet.GetComponent<Rigidbody>();
                     rb1.AddForce(bulletForce * ray.direction);
+
+                    audioManager.SetAudioObj(clip);
+                    audioManager.PlayOneShotRandomPitch(1);
                     break;
                 case 1:
                     foreach(Transform t in shotgunBulletSpawn)
@@ -174,6 +181,9 @@ public class GunManager : MonoBehaviour
                         Rigidbody rb2 = bullet.GetComponent<Rigidbody>();
                         rb2.AddForce(bulletForce * t.transform.forward);
                     }
+
+                    audioManager.SetAudioObj(clip);
+                    audioManager.PlayOneShotRandomPitch(2);
                     break;
                 case 2:
                     bullet = Instantiate(ammoObjs[2], pistolBulletSpawn.position, pistolBulletSpawn.rotation);
@@ -183,6 +193,9 @@ public class GunManager : MonoBehaviour
 
                     Rigidbody rb3 = bullet.GetComponent<Rigidbody>();
                     rb3.AddForce(bulletForce * ray.direction);
+
+                    audioManager.SetAudioObj(clip);
+                    audioManager.PlayOneShotRandomPitch(3);
                     break;
             }
 
@@ -228,6 +241,9 @@ public class GunManager : MonoBehaviour
 
         CheckIfStartReload();
         isReloading = true;
+
+        audioManager.SetAudioObj(clip);
+        audioManager.PlayOneShotRandomPitch(5);
 
         yield return new WaitForSeconds(1f);
 

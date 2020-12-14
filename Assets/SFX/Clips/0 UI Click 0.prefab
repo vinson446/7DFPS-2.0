@@ -44,11 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 376bc942775cdee43b79eab35dec60e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: 1
+  volume: 0.5
   pitch: 1
   existenceTime: 5
-  randMinPitch: 0
-  randMaxPitch: 0
+  randMinPitch: 0.975
+  randMaxPitch: 1.025
   fadeIn: 0
   fadeOut: 0
   fadeDuration: 0

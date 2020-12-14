@@ -9,9 +9,14 @@ public class HealthPickup : MonoBehaviour
     public float lifeTime;
     public float rotateTime;
 
+    AudioManager audioManager;
+    public GameObject clip;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
+
         Destroy(gameObject, lifeTime);
     }
 
@@ -27,6 +32,9 @@ public class HealthPickup : MonoBehaviour
         {
             Player player = other.gameObject.GetComponent<Player>();
             player.Heal(healAmt);
+
+            audioManager.SetAudioObj(clip);
+            audioManager.PlayOneShotRandomPitch(14);
 
             Destroy(gameObject);
         }

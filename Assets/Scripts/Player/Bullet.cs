@@ -13,9 +13,13 @@ public class Bullet : MonoBehaviour
 
     Rigidbody rb;
 
+    AudioManager audioManager;
+    public GameObject clip;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
         rb = GetComponent<Rigidbody>();
 
         Destroy(gameObject, lifeTime);
@@ -32,6 +36,9 @@ public class Bullet : MonoBehaviour
             {
                 Instantiate(explosion, transform.position, Quaternion.identity);
                 explodeOnce = true;
+
+                audioManager.SetAudioObj(clip);
+                audioManager.PlayOneShotRandomPitch(4);
             }
 
             Destroy(gameObject);
@@ -45,6 +52,9 @@ public class Bullet : MonoBehaviour
             {
                 Instantiate(explosion, transform.position, Quaternion.identity);
                 explodeOnce = true;
+
+                audioManager.SetAudioObj(clip);
+                audioManager.PlayOneShotRandomPitch(4);
             }
 
             Destroy(gameObject);
