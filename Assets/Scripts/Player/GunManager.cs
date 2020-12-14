@@ -206,12 +206,12 @@ public class GunManager : MonoBehaviour
 
     private void CheckIfStartReload()
     {
-
+        OnReload?.Invoke();
     }
 
     private void CheckIfStoppedReload()
     {
-
+        OnIdle?.Invoke();
     }
 
     void Reload()
@@ -224,6 +224,7 @@ public class GunManager : MonoBehaviour
     {
         ShowMuzzleFlash(false);
 
+        CheckIfStartReload();
         isReloading = true;
 
         yield return new WaitForSeconds(1f);
@@ -262,6 +263,7 @@ public class GunManager : MonoBehaviour
         UpdateAmmoUI();
 
         isReloading = false;
+        CheckIfStoppedReload();
     }
 
     void UpdateAmmoUI()
