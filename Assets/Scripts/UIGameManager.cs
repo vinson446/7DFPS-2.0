@@ -13,6 +13,8 @@ public class UIGameManager : MonoBehaviour
     [SerializeField] Slider hpBar;
     [SerializeField] Slider expBar;
     [SerializeField] TextMeshProUGUI levelText;
+    public TextMeshProUGUI damageText;
+    public TextMeshProUGUI fireRateText;
 
     [Header("Middle Center References")]
     [SerializeField] TextMeshProUGUI roundCompleteText1;
@@ -45,19 +47,24 @@ public class UIGameManager : MonoBehaviour
     // references
     Player player;
     GameManager gameManager;
+    GunManager gunManager;
 
     [Header("Death")]
     public GameObject deathPanel;
     public TextMeshProUGUI finalRoundText;
     public TextMeshProUGUI finalScoreText;
 
+    private void Awake()
+    {
+        player = FindObjectOfType<Player>();
+        gameManager = FindObjectOfType<GameManager>();
+        gunManager = player.GetComponent<GunManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         deathPanel.SetActive(false);
-
-        player = FindObjectOfType<Player>();
-        gameManager = FindObjectOfType<GameManager>();
 
         UpdateHP(false, false);
         UpdateExp();
@@ -84,10 +91,12 @@ public class UIGameManager : MonoBehaviour
         {
             if (hurt)
             {
+                DOTween.Kill(HPImage);
                 StartCoroutine(HPHurtCoroutine());
             }
             else
             {
+                DOTween.Kill(HPImage);
                 StartCoroutine(HPHealCoroutine());
             }
         }
@@ -164,6 +173,27 @@ public class UIGameManager : MonoBehaviour
     public void UpdateWeaponImage(int index)
     {
         weaponImage.sprite = weaponSprites[index];
+
+        ShowStats();
+    }
+
+    public void ShowStats()
+    {
+        if (gunManager.CurrentWeapon == 0)
+        {
+            damageText.text = player.RifleDamage.ToString();
+            fireRateText.text = player.RifleFireRate.ToString();
+        }
+        else if (gunManager.CurrentWeapon == 1)
+        {
+            damageText.text = player.ShotgunDamage.ToString();
+            fireRateText.text = player.ShotgunFireRate.ToString();
+        }
+        else if (gunManager.CurrentWeapon == 2)
+        {
+            damageText.text = player.PistolDamage.ToString();
+            fireRateText.text = player.PistolFireRate.ToString();
+        }
     }
 
     public void UpdateAmmo(int currentAmmo, float maxAmmo)

@@ -109,7 +109,9 @@ public class RangeEnemy : Enemy
     {
         for (int i = 0; i < round - 1; i++)
         {
+            MaximumHP += 3;
             Level += 1;
+
             Damage += 1;
             AtkSpeed += 0.1f;
         }

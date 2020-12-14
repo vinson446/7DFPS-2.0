@@ -127,7 +127,9 @@ public class MeleeEnemy : Enemy
     {
         for (int i = 0; i < round - 1; i++)
         {
+            MaximumHP += 3;
             Level += 1;
+
             Damage += 2;
         }
 

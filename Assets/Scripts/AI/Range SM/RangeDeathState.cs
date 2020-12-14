@@ -7,7 +7,8 @@ public class RangeDeathState : RangeState
     [SerializeField] int exp;
     public int Exp { get => exp; set => exp = value; }
 
-    public float yOffset;
+    public float yOffsetAmmo;
+    public float yOffsetHealth;
 
     public int chanceToDropPickup;
     public GameObject[] pickupObjs;
@@ -48,11 +49,11 @@ public class RangeDeathState : RangeState
 
         if (pickup == 0)
         {
-            Instantiate(pickupObjs[0], transform.position + new Vector3(0, yOffset, 0), Quaternion.identity);
+            Instantiate(pickupObjs[0], transform.parent.position + new Vector3(0, yOffsetHealth, 0), Quaternion.identity);
         }
         else if (pickup == 1)
         {
-            Instantiate(pickupObjs[1], transform.position + new Vector3(0, yOffset, 0), Quaternion.identity);
+            Instantiate(pickupObjs[1], transform.parent.position + new Vector3(0, yOffsetAmmo, 0), Quaternion.identity);
         }
     }
 }

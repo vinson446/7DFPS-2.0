@@ -67,12 +67,19 @@ public class Player : MonoBehaviour
 
     UIGameManager uiGameManager;
 
+    AudioManager audioManager;
+
     // Start is called before the first frame update
     void Start()
     {
         uiGameManager = FindObjectOfType<UIGameManager>();
+        uiGameManager.ShowStats();
+
+        audioManager = FindObjectOfType<AudioManager>();
 
         currentHP = maximumHP;
+
+        StartCoroutine(CantTakeDamageCoroutine());
     }
 
     public virtual void Attack()
@@ -99,24 +106,23 @@ public class Player : MonoBehaviour
             uiGameManager.UpdateHP(true, true);
 
             StartCoroutine(CantTakeDamageCoroutine());
+
+            // audioManager.PlayOneShotRandomPitch(4);
         }
     }
 
     public void Heal(int heal)
     {
-        if (!cantTakeDamage)
+        currentHP += heal;
+
+        if (currentHP > maximumHP)
         {
-            currentHP += heal;
-
-            if (currentHP > maximumHP)
-            {
-                currentHP = maximumHP;
-            }
-
-            uiGameManager.UpdateHP(true, false);
-
-            StartCoroutine(CantTakeDamageCoroutine());
+            currentHP = maximumHP;
         }
+
+        uiGameManager.UpdateHP(true, false);
+
+        StartCoroutine(CantTakeDamageCoroutine());
     }
 
     IEnumerator CantTakeDamageCoroutine()
@@ -154,6 +160,8 @@ public class Player : MonoBehaviour
 
         UpgradeDamage();
         UpgradeFireRate();
+
+        uiGameManager.ShowStats();
     }
 
     public void UpgradeDamage()
