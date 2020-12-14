@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
     {
         while (currentNumEnemiesSpawned < totalNumEnemiesToSpawn)
         {
-            for (int i = 0; i < totalNumEnemiesToSpawn / Random.Range(3, 6); i++)
+            for (int i = 0; i < totalNumEnemiesToSpawn / 3; i++)
             {
                 if (currentNumEnemiesSpawned < totalNumEnemiesToSpawn)
                 {

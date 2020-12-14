@@ -25,7 +25,8 @@ public class EnemyBullet : MonoBehaviour
         if (collider.gameObject.tag == "Player")
         {
             Player player = collider.gameObject.GetComponentInParent<Player>();
-            player.TakeDamage(Damage);
+            if (player != null)
+                player.TakeDamage(Damage);
 
             Destroy(gameObject);
         }
