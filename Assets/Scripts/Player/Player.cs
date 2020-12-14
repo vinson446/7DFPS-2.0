@@ -86,6 +86,11 @@ public class Player : MonoBehaviour
         {
             currentHP -= damage;
 
+            if (currentHP > maximumHP)
+            {
+                currentHP = maximumHP;
+            }
+
             if (currentHP <= 0)
             {
                 Die();

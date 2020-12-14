@@ -8,6 +8,14 @@ public class MenuManager : MonoBehaviour
     [Header("Panels")]
     [SerializeField] GameObject[] menuPanels;
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+
     public void GoToScene(int index)
     {
         SceneManager.LoadScene(index);

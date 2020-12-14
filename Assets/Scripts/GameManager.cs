@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,8 +22,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] int currentNumEnemiesSpawned;
     [SerializeField] int totalNumEnemiesToSpawn;
     public int TotalNumEnemiesToSpawn => totalNumEnemiesToSpawn;
-    [SerializeField] float timeBetweenSpawn1;
-    [SerializeField] float timeBetweenSpawn2;
+    //[SerializeField] float timeBetweenSpawn1;
+    //[SerializeField] float timeBetweenSpawn2;
     [SerializeField] float timeBetweenWaves;
 
     [Header("Spawn References")]
@@ -59,7 +60,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     public void StartNewRound()
@@ -79,7 +83,7 @@ public class GameManager : MonoBehaviour
         if (currentRound != 1)
         {
             currentNumEnemiesSpawned = 0;
-            totalNumEnemiesToSpawn = Random.Range(totalNumEnemiesToSpawn, totalNumEnemiesToSpawn * 2);
+            totalNumEnemiesToSpawn = Random.Range(totalNumEnemiesToSpawn * 2, totalNumEnemiesToSpawn * 3);
         }
     }
 
@@ -133,8 +137,6 @@ public class GameManager : MonoBehaviour
                     }
 
                     currentNumEnemiesSpawned += 1;
-
-                    yield return new WaitForSeconds(Random.Range(timeBetweenSpawn1, timeBetweenSpawn2));
                 }
             }
 

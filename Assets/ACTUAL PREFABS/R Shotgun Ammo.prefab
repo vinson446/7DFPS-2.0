@@ -91,7 +91,6 @@ GameObject:
   - component: {fileID: 357787773366847535}
   - component: {fileID: 6942350238709370203}
   - component: {fileID: 1672949577218448695}
-  - component: {fileID: 4935941467677443546}
   m_Layer: 0
   m_Name: R Shotgun Ammo
   m_TagString: Bullet
@@ -124,7 +123,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 3730876406673141838}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.5
   m_Height: 1
   m_Direction: 1
@@ -159,20 +158,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   lifeTime: 10000
---- !u!64 &4935941467677443546
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3730876406673141838}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &5499526381331195650
 GameObject:
   m_ObjectHideFlags: 0

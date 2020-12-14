@@ -25,24 +25,24 @@ public class GunManager : MonoBehaviour
     [SerializeField] int currentRifleAmmo;
     [SerializeField] int rifleReloadAmt;
     [SerializeField] int maxRifleAmmo;
+    public int MAXIMUMRIFLEAMMO;
 
     [Header("Shotgun Settings")]
     [SerializeField] int currentShotgunAmmo;
     [SerializeField] int shotgunReloadAmt;
     [SerializeField] int maxShotgunAmmo;
+    public int MAXIMUMSHOTGUNAMMO;
 
     [Header("Pistol Settings")]
     [SerializeField] int currentPistolAmmo;
     [SerializeField] int pistolReloadAmt;
 
-    [Header("Pickup Settings")]
-    [SerializeField] int riflePickupAmt;
-    [SerializeField] int shotgunPickupAmt;
-    [SerializeField] int pistolPickupAmt;
-
     [Header("FX")]
     [SerializeField] ParticleSystem[] muzzleFlashFX;
     bool showingFX;
+
+    [Header("Animator")]
+    Animator animator;
 
     [SerializeField] int currentWeapon;
     float shootCD;
@@ -59,6 +59,8 @@ public class GunManager : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
         uiGameManager = FindObjectOfType<UIGameManager>();
+
+        animator = GetComponent<Animator>();
 
         currentRifleAmmo = rifleReloadAmt;
         currentShotgunAmmo = shotgunReloadAmt;
@@ -188,8 +190,6 @@ public class GunManager : MonoBehaviour
         {
             OnFire?.Invoke();
         }
-
-
     }
 
     private void CheckIfStoppedFiring()
@@ -291,7 +291,25 @@ public class GunManager : MonoBehaviour
 
         UpdateAmmoUI();
 
+        ChangeAnimator();
+
         uiGameManager.UpdateWeaponImage(currentWeapon);
+    }
+
+    void ChangeAnimator()
+    {
+        if (currentWeapon == 0)
+        {
+            animator.runtimeAnimatorController = Resources.Load("Rifle") as RuntimeAnimatorController;
+        }
+        else if (currentWeapon == 1)
+        {
+            animator.runtimeAnimatorController = Resources.Load("Shotgun") as RuntimeAnimatorController;
+        }
+        else if (currentWeapon == 2)
+        {
+            animator.runtimeAnimatorController = Resources.Load("Pistol") as RuntimeAnimatorController;
+        }
     }
 
     public void UseBulletOnBackend()
@@ -312,15 +330,15 @@ public class GunManager : MonoBehaviour
         UpdateAmmoUI();
     }
 
-    public void GainAmmoOnBackend()
+    public void GainAmmoOnBackend(int rifleAmmoPickup, int shotgunAmmoPickup)
     {
-        currentRifleAmmo += riflePickupAmt;
-        if (currentRifleAmmo > maxRifleAmmo)
-            currentRifleAmmo = maxRifleAmmo;
+        maxRifleAmmo += rifleAmmoPickup;
+        if (maxRifleAmmo > MAXIMUMRIFLEAMMO)
+            maxRifleAmmo = MAXIMUMRIFLEAMMO;
 
-        currentShotgunAmmo += shotgunPickupAmt;
-        if (currentShotgunAmmo > maxShotgunAmmo)
-            currentShotgunAmmo = maxShotgunAmmo;
+        maxShotgunAmmo += shotgunAmmoPickup;
+        if (maxShotgunAmmo > MAXIMUMSHOTGUNAMMO)
+            maxShotgunAmmo = MAXIMUMSHOTGUNAMMO;
 
         UpdateAmmoUI();
     }

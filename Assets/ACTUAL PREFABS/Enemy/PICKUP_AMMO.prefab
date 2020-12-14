@@ -4765,6 +4765,7 @@ GameObject:
   - component: {fileID: 8140858131464991587}
   - component: {fileID: 5140288069921750214}
   - component: {fileID: 6967367184046475276}
+  - component: {fileID: 1822235832}
   m_Layer: 0
   m_Name: PICKUP_AMMO
   m_TagString: Untagged
@@ -4834,3 +4835,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1822235832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8913173393656932825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fef3fe4b0af155f43802b133dbba60aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rifleAmt: 30
+  shotgunAmt: 15
+  lifeTime: 15

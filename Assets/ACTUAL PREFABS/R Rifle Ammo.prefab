@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8382493057483308578}
   - component: {fileID: 8988008773798277156}
   - component: {fileID: 6269825281595251286}
-  - component: {fileID: -2894343007471698705}
   m_Layer: 0
   m_Name: R Rifle Ammo
   m_TagString: Bullet
@@ -45,7 +44,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 847690971902673934}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.5
   m_Height: 1
   m_Direction: 1
@@ -80,20 +79,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   lifeTime: 10000
---- !u!64 &-2894343007471698705
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 847690971902673934}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &6758299164338345598
 GameObject:
   m_ObjectHideFlags: 0
