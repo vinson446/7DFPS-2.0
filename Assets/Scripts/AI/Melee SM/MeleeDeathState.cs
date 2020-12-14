@@ -48,11 +48,11 @@ public class MeleeDeathState : MeleeState
 
         if (pickup == 0)
         {
-            Instantiate(pickupObjs[0], transform.position + new Vector3(0, yOffset, 0), Quaternion.identity);
+            Instantiate(pickupObjs[0], transform.parent.position + new Vector3(0, yOffset, 0), Quaternion.identity);
         }
         else if (pickup == 1)
         {
-            Instantiate(pickupObjs[1], transform.position + new Vector3(0, yOffset, 0), Quaternion.identity);
+            Instantiate(pickupObjs[1], transform.parent.position + new Vector3(0, yOffset, 0), Quaternion.identity);
         }
     }
 }

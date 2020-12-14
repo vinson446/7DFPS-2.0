@@ -49,6 +49,8 @@ public class GunManager : MonoBehaviour
     public float pistolWaitTime;
 
     [SerializeField] int currentWeapon;
+    public int CurrentWeapon => currentWeapon;
+
     float shootCD;
 
     public float offsetX;

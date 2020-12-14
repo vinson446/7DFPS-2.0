@@ -79,6 +79,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   lifeTime: 5
+  explosion: {fileID: 4294349734368534872, guid: 9a28fd458baf46840a0d2bfd56b0a86b,
+    type: 3}
 --- !u!1 &7111547447763487515
 GameObject:
   m_ObjectHideFlags: 0

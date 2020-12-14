@@ -10,6 +10,7 @@ TagManager:
   - Bullet
   - Bullet Spawn
   - Cover Spots
+  - Pickup
   layers:
   - Default
   - TransparentFX

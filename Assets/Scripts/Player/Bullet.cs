@@ -8,6 +8,9 @@ public class Bullet : MonoBehaviour
     public int Damage { get => damage; set => damage = value; }
     [SerializeField] float lifeTime;
 
+    public GameObject explosion;
+    bool explodeOnce;
+
     Rigidbody rb;
 
     // Start is called before the first frame update
@@ -25,6 +28,12 @@ public class Bullet : MonoBehaviour
             MeleeEnemy mEnemy = collider.gameObject.GetComponent<MeleeEnemy>();
             mEnemy.TakeDamage(Damage);
 
+            if (!explodeOnce)
+            {
+                Instantiate(explosion, transform.position, Quaternion.identity);
+                explodeOnce = true;
+            }
+
             Destroy(gameObject);
         }
         else if (collider.gameObject.tag == "R Enemy")
@@ -32,9 +41,15 @@ public class Bullet : MonoBehaviour
             RangeEnemy rEnemy = collider.gameObject.GetComponent<RangeEnemy>();
             rEnemy.TakeDamage(Damage);
 
+            if (!explodeOnce)
+            {
+                Instantiate(explosion, transform.position, Quaternion.identity);
+                explodeOnce = true;
+            }
+
             Destroy(gameObject);
         }
-        else if (collider.gameObject.tag != "Bullet" && collider.gameObject.tag != "Bullet Spawn" && collider.gameObject.tag != "Player")
+        else if (collider.gameObject.tag != "Bullet" && collider.gameObject.tag != "Bullet Spawn" && collider.gameObject.tag != "Player" && collider.gameObject.tag != "Pickup")
         {
             Destroy(gameObject);
         }

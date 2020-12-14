@@ -6,10 +6,10 @@ public abstract class Enemy : MonoBehaviour
 {
     [Header("HP Settings")]
     [SerializeField] int currentHP;
-    public int CurrentHP => currentHP;
+    public int CurrentHP { get => currentHP; set => currentHP = value; }
 
     [SerializeField] int maximumHP;
-    public int MaximumHP => maximumHP;
+    public int MaximumHP { get => maximumHP; set => maximumHP = value; }
 
     [Header("Combat Settings")]
     [SerializeField] int level;
@@ -35,8 +35,6 @@ public abstract class Enemy : MonoBehaviour
     void Awake()
     {
         enemyUI = GetComponentInChildren<EnemyUI>();
-
-        currentHP = maximumHP;
     }
 
     public virtual void Attack()

@@ -128,12 +128,16 @@ public class GameManager : MonoBehaviour
                     {
                         MeleeEnemy mEnemy = enemy.GetComponent<MeleeEnemy>();
                         mEnemy.LevelUp(currentRound);
+
+                        mEnemy.CurrentHP = mEnemy.MaximumHP;
                     }
                     // range
                     else if (spawnedEnemyIndex == 2 || spawnedEnemyIndex == 3)
                     {
                         RangeEnemy rEnemy = enemy.GetComponent<RangeEnemy>();
                         rEnemy.LevelUp(currentRound);
+
+                        rEnemy.CurrentHP = rEnemy.MaximumHP;
                     }
 
                     currentNumEnemiesSpawned += 1;

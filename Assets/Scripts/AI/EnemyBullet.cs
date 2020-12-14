@@ -29,11 +29,7 @@ public class EnemyBullet : MonoBehaviour
 
             Destroy(gameObject);
         }
-        else if (collider.gameObject.tag != "Bullet" && collider.gameObject.tag != "Bullet Spawn")
-        {
-            Destroy(gameObject);
-        }
-        else
+        else if (collider.gameObject.tag != "Bullet" && collider.gameObject.tag != "Bullet Spawn" && collider.gameObject.tag != "Pickup")
         {
             Destroy(gameObject);
         }
