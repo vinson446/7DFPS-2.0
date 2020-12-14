@@ -7,6 +7,7 @@ public class GunManager : MonoBehaviour
 {
     public event Action OnFire = delegate { };
     public event Action OnIdle = delegate { };
+    public event Action OnReload = delegate { };
 
     [Header("Weapon GameObjs")]
     [SerializeField] GameObject[] weaponObjs;
@@ -198,6 +199,16 @@ public class GunManager : MonoBehaviour
         {
             OnIdle?.Invoke();
         }
+    }
+
+    private void CheckIfStartReload()
+    {
+
+    }
+
+    private void CheckIfStoppedReload()
+    {
+
     }
 
     void Reload()

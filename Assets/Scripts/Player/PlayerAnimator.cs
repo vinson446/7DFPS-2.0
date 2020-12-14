@@ -9,6 +9,7 @@ public class PlayerAnimator : MonoBehaviour
     const string WalkState = "Walk";
     const string RunState = "Run";
     const string FireState = "Fire";
+    const string ReloadState = "Reload";
 
     GunManager gunManager;
     Movement_CC movement;
@@ -39,13 +40,19 @@ public class PlayerAnimator : MonoBehaviour
 
     public void OnStartFiring()
     {
-        _animator.CrossFadeInFixedTime(FireState, .2f);
+        _animator.CrossFadeInFixedTime(FireState, 0f);
+    }
+
+    public void OnStartReload()
+    {
+        _animator.CrossFadeInFixedTime(ReloadState, .2f);
     }
 
     private void OnEnable()
     {
         gunManager.OnIdle += OnStartIdle;
         gunManager.OnFire += OnStartFiring;
+        gunManager.OnReload += OnStartReload;
         movement.OnIdle += OnStartIdle;
         movement.OnWalk += OnStartWalk;
         movement.OnRun += OnStartRun;
@@ -55,6 +62,7 @@ public class PlayerAnimator : MonoBehaviour
     {
         gunManager.OnIdle -= OnStartIdle;
         gunManager.OnFire -= OnStartFiring;
+        gunManager.OnReload -= OnStartReload;
         movement.OnIdle -= OnStartIdle;
         movement.OnWalk -= OnStartWalk;
         movement.OnRun -= OnStartRun;
