@@ -81,14 +81,14 @@ public class RangeEnemy : Enemy
             EnemyBullet b1 = bull.GetComponent<EnemyBullet>();
             b1.Damage = Damage;
 
-            bull.transform.LookAt(stateMachine.PlayerTrans);
-            bull.transform.rotation *= Quaternion.Euler(90, 0, 0);
-
             Rigidbody rb = bull.GetComponent<Rigidbody>();
 
             // rb.AddForce(bulletForce * bulletSpawn.right);
             var dir = stateMachine.PlayerTrans.position - bulletSpawn.position;
             rb.AddForce(bulletForce * dir);
+
+            bull.transform.forward = dir;
+            // bull.transform.rotation *= Quaternion.Euler(90, 0, 0);
 
             yield return new WaitForSeconds(1 / fireRate);
 

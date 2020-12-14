@@ -1236,7 +1236,7 @@ MonoBehaviour:
   currentState: 
   weapon: Rifle
   fireRate: 1
-  bullet: {fileID: 7213857792166699607, guid: c4ca10e429571634186da71ef1c9b195, type: 3}
+  bullet: {fileID: 847690971902673934, guid: 1cbd677d5d2cc3c44a51d846560ae96b, type: 3}
   bulletSpawn: {fileID: 5345792175625613235}
   bulletForce: 100
   rotSpeed: 120

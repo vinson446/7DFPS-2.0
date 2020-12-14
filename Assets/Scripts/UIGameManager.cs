@@ -137,7 +137,14 @@ public class UIGameManager : MonoBehaviour
 
     public void UpdateAmmo(int currentAmmo, float maxAmmo)
     {
-        ammoText.text = currentAmmo.ToString() + " / " + maxAmmo.ToString();
+        if (maxAmmo == Mathf.Infinity)
+        {
+            ammoText.text = currentAmmo.ToString() + " /  ∞";
+        }
+        else
+        {
+            ammoText.text = currentAmmo.ToString() + " / " + maxAmmo.ToString();
+        }
     }
 
     public void UpdateRound(int round)

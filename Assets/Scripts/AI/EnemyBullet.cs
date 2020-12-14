@@ -11,6 +11,12 @@ public class EnemyBullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
+        Player player = FindObjectOfType<Player>();
+        transform.LookAt(player.transform);
+        transform.rotation *= Quaternion.Euler(90, 0, 0);
+        */
+
         Destroy(gameObject, lifeTime);
     }
 
@@ -24,6 +30,10 @@ public class EnemyBullet : MonoBehaviour
             Destroy(gameObject);
         }
         else if (collider.gameObject.tag != "Bullet" && collider.gameObject.tag != "Bullet Spawn")
+        {
+            Destroy(gameObject);
+        }
+        else
         {
             Destroy(gameObject);
         }
