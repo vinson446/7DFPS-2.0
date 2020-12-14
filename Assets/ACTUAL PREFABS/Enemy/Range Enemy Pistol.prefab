@@ -2158,7 +2158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ab836c7415bd44bbe087baaf7d5529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 8
+  runSpeed: 5
   rotSpeed: 120
   debugRunAwayRange: 0
   debugAttackRange: 1
@@ -2202,7 +2202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd9c1598c6e79c4b82e215d526ca267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exp: 20
+  exp: 10
   yOffsetAmmo: 0.35
   yOffsetHealth: 0.15
   chanceToDropPickup: 100

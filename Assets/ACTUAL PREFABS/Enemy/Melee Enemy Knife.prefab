@@ -3031,7 +3031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acedd0c959f1bdf4ba962bbd0b0a23df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exp: 20
+  exp: 10
   yOffset: 0.5
   chanceToDropPickup: 100
   pickupObjs:

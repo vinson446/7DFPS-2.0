@@ -82,7 +82,7 @@ public class MeleeEnemy : Enemy
                     }
                 }
 
-                int rand = UnityEngine.Random.Range(0, 2);
+                int rand = 0;
                 if (rand == 0)
                 {
                     audioManager.SetAudioObj(clip);
@@ -103,7 +103,7 @@ public class MeleeEnemy : Enemy
                     }
                 }
 
-                int rand = UnityEngine.Random.Range(0, 2);
+                int rand = 0;
                 if (rand == 0)
                 {
                     audioManager.SetAudioObj(clip);
@@ -124,7 +124,7 @@ public class MeleeEnemy : Enemy
                     }
                 }
 
-                int rand = UnityEngine.Random.Range(0, 2);
+                int rand = 0;
                 if (rand == 0)
                 {
                     audioManager.SetAudioObj(clip);
@@ -152,10 +152,10 @@ public class MeleeEnemy : Enemy
     {
         for (int i = 0; i < round - 1; i++)
         {
-            MaximumHP += 3;
+            MaximumHP *= 2;
             Level += 1;
 
-            Damage += 2;
+            Damage *= 2;
         }
 
         EnemyUI enemyUI = GetComponentInChildren<EnemyUI>();

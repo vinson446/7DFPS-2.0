@@ -80,7 +80,7 @@ public class RangeEnemy : Enemy
 
             OnAttackAnimation();
 
-            int rand = UnityEngine.Random.Range(0, 2);
+            int rand = 0;
             if (rand == 0)
             {
                 audioManager.SetAudioObj(clip);
@@ -125,11 +125,11 @@ public class RangeEnemy : Enemy
     {
         for (int i = 0; i < round - 1; i++)
         {
-            MaximumHP += 3;
+            MaximumHP *= 2;
             Level += 1;
 
-            Damage += 1;
-            AtkSpeed += 0.1f;
+            Damage *= 2;
+            AtkSpeed *= 2;
         }
 
         EnemyUI enemyUI = GetComponentInChildren<EnemyUI>();
