@@ -44,6 +44,9 @@ public class GunManager : MonoBehaviour
 
     [Header("Animator")]
     Animator animator;
+    public float rifleWaitTime;
+    public float shotgunWaitTime;
+    public float pistolWaitTime;
 
     [SerializeField] int currentWeapon;
     float shootCD;

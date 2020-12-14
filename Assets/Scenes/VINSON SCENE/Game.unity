@@ -13482,8 +13482,8 @@ MonoBehaviour:
   numEnemiesKilledTotal: 0
   isStartingNewRound: 0
   currentNumEnemiesSpawned: 0
-  totalNumEnemiesToSpawn: 0
-  timeBetweenWaves: 5
+  totalNumEnemiesToSpawn: 25
+  timeBetweenWaves: 0
   enemiesToSpawn:
   - {fileID: 8057884569367690275, guid: c1a9b811cf2e5fd4aa7f103c161d71d0, type: 3}
   - {fileID: 1467180840000630589, guid: 9b0c8b5492367be44843ab2f4404b57f, type: 3}
@@ -13492,13 +13492,46 @@ MonoBehaviour:
   - {fileID: 8037852846246812530, guid: 4f91d25ac3398f348b794eb0c8501f81, type: 3}
   spawnSettings:
   - {fileID: 118981341}
-  - {fileID: 118981341}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1124059279}
+  - {fileID: 133720061}
+  - {fileID: 55455081}
+  - {fileID: 1282266546}
+  - {fileID: 1479635692}
+  - {fileID: 1148970604}
+  - {fileID: 1402053540}
+  - {fileID: 319726304}
+  - {fileID: 871888693}
+  - {fileID: 700188620}
+  - {fileID: 638227402}
+  - {fileID: 940638111}
+  - {fileID: 1356520941}
+  - {fileID: 1220080378}
+  - {fileID: 1663175065}
+  - {fileID: 295550057}
+  - {fileID: 1341498629}
+  - {fileID: 192141878}
+  - {fileID: 726797826}
+  - {fileID: 253597489}
+  - {fileID: 86839987}
+  - {fileID: 498781065}
+  - {fileID: 708964993}
+  - {fileID: 224820171}
+  - {fileID: 492160124}
+  - {fileID: 1775609830}
+  - {fileID: 837559361}
+  - {fileID: 492013589}
+  - {fileID: 1469876471}
+  - {fileID: 490865851}
+  - {fileID: 749940410}
+  - {fileID: 429078346}
+  - {fileID: 1581213428}
+  - {fileID: 1070832217}
+  - {fileID: 1074545046}
+  - {fileID: 224533657}
+  - {fileID: 957037952}
+  - {fileID: 374524325}
+  - {fileID: 416778693}
+  - {fileID: 465044942}
 --- !u!4 &299561353
 Transform:
   m_ObjectHideFlags: 0
@@ -26591,6 +26624,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 518013043, guid: 88f9ac196a3445f499ee54b335faed2b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -189.29999
+      objectReference: {fileID: 0}
+    - target: {fileID: 518013043, guid: 88f9ac196a3445f499ee54b335faed2b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -89.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1412448993, guid: 88f9ac196a3445f499ee54b335faed2b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -222.8999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1412448993, guid: 88f9ac196a3445f499ee54b335faed2b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -189.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564366426, guid: 88f9ac196a3445f499ee54b335faed2b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -124
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564366426, guid: 88f9ac196a3445f499ee54b335faed2b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -185.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1705518119, guid: 88f9ac196a3445f499ee54b335faed2b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1705518119, guid: 88f9ac196a3445f499ee54b335faed2b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -171.6999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995342597, guid: 88f9ac196a3445f499ee54b335faed2b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1995342597, guid: 88f9ac196a3445f499ee54b335faed2b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -17
+      objectReference: {fileID: 0}
     - target: {fileID: 701106091043296325, guid: 88f9ac196a3445f499ee54b335faed2b,
         type: 3}
       propertyPath: m_IsActive
@@ -101592,33 +101665,17 @@ PrefabInstance:
     - target: {fileID: 5036593655890405075, guid: 4f91d25ac3398f348b794eb0c8501f81,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5036593655890405075, guid: 4f91d25ac3398f348b794eb0c8501f81,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6328850574373377157, guid: 4f91d25ac3398f348b794eb0c8501f81,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: d474ddcb3a7132b48887da5348ea41e5,
-        type: 2}
-    - target: {fileID: 6328850574373377157, guid: 4f91d25ac3398f348b794eb0c8501f81,
-        type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8037852846246812530, guid: 4f91d25ac3398f348b794eb0c8501f81,
         type: 3}
       propertyPath: m_Name
       value: Boss
-      objectReference: {fileID: 0}
-    - target: {fileID: 8037852846246812530, guid: 4f91d25ac3398f348b794eb0c8501f81,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f91d25ac3398f348b794eb0c8501f81, type: 3}
@@ -101629,36 +101686,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 125901724458026082, guid: 9b0c8b5492367be44843ab2f4404b57f,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: d474ddcb3a7132b48887da5348ea41e5,
-        type: 2}
-    - target: {fileID: 125901724458026082, guid: 9b0c8b5492367be44843ab2f4404b57f,
-        type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1467180840000630589, guid: 9b0c8b5492367be44843ab2f4404b57f,
         type: 3}
       propertyPath: m_Name
       value: Melee Enemy Knife
       objectReference: {fileID: 0}
-    - target: {fileID: 1467180840000630589, guid: 9b0c8b5492367be44843ab2f4404b57f,
+    - target: {fileID: 3159943252072670423, guid: 9b0c8b5492367be44843ab2f4404b57f,
         type: 3}
-      propertyPath: m_IsActive
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3159943252072670423, guid: 9b0c8b5492367be44843ab2f4404b57f,
         type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3159943252072670423, guid: 9b0c8b5492367be44843ab2f4404b57f,
-        type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7836709228339285030, guid: 9b0c8b5492367be44843ab2f4404b57f,
         type: 3}
@@ -101737,7 +101778,7 @@ PrefabInstance:
     - target: {fileID: 5195867259328944355, guid: 06842818511217042954cc5bc3542829,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: -2.11
       objectReference: {fileID: 0}
     - target: {fileID: 5195867259328944355, guid: 06842818511217042954cc5bc3542829,
         type: 3}
@@ -101810,14 +101851,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1147410704057165820, guid: 026ac524ed2cb244490540efa209187b,
         type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: d474ddcb3a7132b48887da5348ea41e5,
-        type: 2}
-    - target: {fileID: 1147410704057165820, guid: 026ac524ed2cb244490540efa209187b,
-        type: 3}
       propertyPath: m_hasFontAssetChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1354577696584089994, guid: 026ac524ed2cb244490540efa209187b,
         type: 3}
@@ -101893,26 +101928,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6532468742784548941, guid: c1a9b811cf2e5fd4aa7f103c161d71d0,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: d474ddcb3a7132b48887da5348ea41e5,
-        type: 2}
-    - target: {fileID: 6532468742784548941, guid: c1a9b811cf2e5fd4aa7f103c161d71d0,
-        type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6532468743427134281, guid: c1a9b811cf2e5fd4aa7f103c161d71d0,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6532468743427134281, guid: c1a9b811cf2e5fd4aa7f103c161d71d0,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7248697524850222745, guid: c1a9b811cf2e5fd4aa7f103c161d71d0,
         type: 3}
@@ -101974,11 +101998,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Melee Enemy Axe
       objectReference: {fileID: 0}
-    - target: {fileID: 8057884569367690275, guid: c1a9b811cf2e5fd4aa7f103c161d71d0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1a9b811cf2e5fd4aa7f103c161d71d0, type: 3}
 --- !u!1001 &1503045632112194536
@@ -101996,7 +102015,7 @@ PrefabInstance:
     - target: {fileID: 8140858131464991587, guid: ea2fe3611c7a0014582daf8998bfd39d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.616
       objectReference: {fileID: 0}
     - target: {fileID: 8140858131464991587, guid: ea2fe3611c7a0014582daf8998bfd39d,
         type: 3}
@@ -102047,11 +102066,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PICKUP_AMMO
-      objectReference: {fileID: 0}
-    - target: {fileID: 8913173393656932825, guid: ea2fe3611c7a0014582daf8998bfd39d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea2fe3611c7a0014582daf8998bfd39d, type: 3}
@@ -102194,7 +102208,7 @@ PrefabInstance:
     - target: {fileID: 2580998620988256655, guid: e12a9bbe7c80727468cf89bee5f8dd2b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3267081197647827131, guid: e12a9bbe7c80727468cf89bee5f8dd2b,
         type: 3}
@@ -102549,11 +102563,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PICKUP_HEALTH
       objectReference: {fileID: 0}
-    - target: {fileID: 6530860579511666106, guid: 269bf55874773804fb0bf8ae18931ca6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 269bf55874773804fb0bf8ae18931ca6, type: 3}
 --- !u!1001 &6362265661924572344
@@ -102630,14 +102639,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6362265662084542173, guid: f0820b14dff6466409183a47bed506f9,
         type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: d474ddcb3a7132b48887da5348ea41e5,
-        type: 2}
-    - target: {fileID: 6362265662084542173, guid: f0820b14dff6466409183a47bed506f9,
-        type: 3}
       propertyPath: m_hasFontAssetChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6362265663268945424, guid: f0820b14dff6466409183a47bed506f9,
         type: 3}

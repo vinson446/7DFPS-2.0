@@ -111,6 +111,11 @@ public class UIGameManager : MonoBehaviour
         yield return new WaitForSeconds(healFadeOutDuration);
     }
 
+    public void ShowDeathScreen()
+    {
+
+    }
+
     public void ShowEnemyCount()
     {
         enemyCountText.text = gameManager.NumEnemiesKilledThisRound.ToString() + " / " + gameManager.TotalNumEnemiesToSpawn.ToString();

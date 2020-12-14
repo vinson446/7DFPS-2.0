@@ -574,7 +574,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exp: 20
-  chanceToDropPickup: 10
+  yOffset: 2
+  chanceToDropPickup: 100
   pickupObjs:
   - {fileID: 6530860579511666106, guid: 269bf55874773804fb0bf8ae18931ca6, type: 3}
   - {fileID: 8913173393656932825, guid: ea2fe3611c7a0014582daf8998bfd39d, type: 3}
@@ -719,8 +720,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: 1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d474ddcb3a7132b48887da5348ea41e5, type: 2}
+  m_sharedMaterial: {fileID: 7065681350710749992, guid: d474ddcb3a7132b48887da5348ea41e5,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -797,7 +799,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_subTextObjects:
   - {fileID: 0}
   - {fileID: 0}

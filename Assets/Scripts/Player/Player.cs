@@ -102,6 +102,23 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Heal(int heal)
+    {
+        if (!cantTakeDamage)
+        {
+            currentHP += heal;
+
+            if (currentHP > maximumHP)
+            {
+                currentHP = maximumHP;
+            }
+
+            uiGameManager.UpdateHP(true, false);
+
+            StartCoroutine(CantTakeDamageCoroutine());
+        }
+    }
+
     IEnumerator CantTakeDamageCoroutine()
     {
         cantTakeDamage = true;
