@@ -428,8 +428,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 269084821}
-  - component: {fileID: 269084820}
   - component: {fileID: 269084822}
+  - component: {fileID: 269084820}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -560,24 +560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClips:
-  - {fileID: 8300000, guid: d81d47dc34ea1e24f857775ba6806ba4, type: 3}
-  - {fileID: 8300000, guid: 2e25874063d50e54e89a27fdc2ce4a8a, type: 3}
-  - {fileID: 8300000, guid: efc0bc053459cf242b497d8786db82e3, type: 3}
-  - {fileID: 8300000, guid: 1aed359c3de790c4092abad441a7637f, type: 3}
-  - {fileID: 8300000, guid: e9fae16e69f752a49a4d34d292c9b1cf, type: 3}
   - {fileID: 8300000, guid: 2dca46c1f984edf46b3549726d1174f1, type: 3}
-  - {fileID: 8300000, guid: ceeb6be1582c50e48a5f6947b7311485, type: 3}
-  - {fileID: 8300000, guid: 17828505f8a20754fafbddec9b292beb, type: 3}
-  - {fileID: 8300000, guid: 7250f0183ea8c4940823f980dae2a72f, type: 3}
-  - {fileID: 8300000, guid: b3d5373581ab4044887cabc8987073dc, type: 3}
-  - {fileID: 8300000, guid: 235b6291908c98648a649762259d9d22, type: 3}
-  - {fileID: 8300000, guid: 9c42dcf8764daa040bfb28b242db18ad, type: 3}
-  - {fileID: 8300000, guid: 53c08160da6da3d4cb6c557ab8eb4d01, type: 3}
-  - {fileID: 8300000, guid: d4ba7324c0f32934e82f8f847f84e1ef, type: 3}
-  - {fileID: 8300000, guid: 1fcd6a6de62e460409ea1b61261ad324, type: 3}
-  - {fileID: 8300000, guid: b300948199b2e374bb710bed7a2007f6, type: 3}
-  - {fileID: 8300000, guid: 13fccc37f6830fe49a8c14ee072e0e68, type: 3}
-  - {fileID: 8300000, guid: 96c25d14c931ed646aca2e56840f4331, type: 3}
 --- !u!1 &586229898
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,6 +694,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 269084822}
+        m_MethodName: SetAudioObj
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2382900608188982448, guid: b947e0d8b57c709409f1d24a6e2f066a,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1210,6 +1205,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 269084822}
+        m_MethodName: SetAudioObj
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2382900608188982448, guid: b947e0d8b57c709409f1d24a6e2f066a,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

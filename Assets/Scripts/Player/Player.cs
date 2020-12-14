@@ -60,6 +60,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] float bulletSizeUpgrade;
 
+    public GameObject levelVFX;
+
     // events
     public UnityEvent TakeDamageEvent;
     public UnityEvent GainExpEvent;
@@ -162,6 +164,17 @@ public class Player : MonoBehaviour
         UpgradeFireRate();
 
         uiGameManager.ShowStats();
+
+        StartCoroutine(LevelVFXCoroutine());
+    }
+
+    IEnumerator LevelVFXCoroutine()
+    {
+        levelVFX.SetActive(true);
+
+        yield return new WaitForSeconds(1);
+
+        levelVFX.SetActive(false);
     }
 
     public void UpgradeDamage()
