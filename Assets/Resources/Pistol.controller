@@ -59,7 +59,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Reload_Pistol
+  m_Name: Reload
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -175,7 +175,7 @@ AnimatorStateMachine:
     m_Position: {x: 280, y: 250, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -982505614614574331}
-    m_Position: {x: 315, y: 315, z: 0}
+    m_Position: {x: 280, y: 300, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

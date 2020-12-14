@@ -45,7 +45,7 @@ public class PlayerAnimator : MonoBehaviour
 
     public void OnStartReload()
     {
-        _animator.CrossFadeInFixedTime(ReloadState, .2f);
+        _animator.CrossFadeInFixedTime(ReloadState, 0f);
     }
 
     private void OnEnable()
